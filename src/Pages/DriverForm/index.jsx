@@ -17,11 +17,24 @@ const DriverForm = () => {
     <div className="master">
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
         Nome
-        <input type="text" placeholder="Nome" name="name" ref={register} />
+        <input
+          className="input-form"
+          type="text"
+          placeholder="Nome"
+          name="name"
+          ref={register}
+        />
         E-mail
-        <input type="email" placeholder="E-mail" name="email" ref={register} />
+        <input
+          className="input-form"
+          type="email"
+          placeholder="E-mail"
+          name="email"
+          ref={register}
+        />
         Senha
         <input
+          className="input-form"
           type="password"
           placeholder="Senha"
           name="password"
@@ -29,6 +42,7 @@ const DriverForm = () => {
         />
         Confirmar Senha
         <input
+          className="input-form"
           placeholder="Confirmação Senha"
           type="password"
           name="password_confirmation"
