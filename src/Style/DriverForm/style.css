@@ -11,4 +11,17 @@
   margin-top: 1%;
   margin-left: 45%;
   justify-content: center;
+  text-align: left;
+}
+
+.button-send {
+  margin-top: 20px;
+  background-color: #152764;
+  color: white;
+  height: 45px;
+  border-radius: 28.5px;
+}
+
+.button-send:hover {
+  background-color: #05668d;
 }
