@@ -1,0 +1,13 @@
+.master {
+  display: block;
+  justify-content: center;
+}
+
+.master-form {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  margin-top: 1%;
+  margin-left: 45%;
+  justify-content: center;
+}
