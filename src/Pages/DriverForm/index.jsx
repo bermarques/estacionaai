@@ -2,9 +2,11 @@ import "../../Style/DriverForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../Helpers/DriverForm/index";
-import { formButton } from "../../Style/DriverForm/style.js";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import { useState } from "react";
 
 const DriverForm = () => {
+  const [visible, setVisible] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
@@ -12,6 +14,14 @@ const DriverForm = () => {
   const sendForm = (event) => {
     delete event.password_confirmation;
     console.log(event);
+  };
+
+  const changeVisibility = () => {
+    if (visible === true) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
   };
   return (
     <div className="master">
@@ -33,21 +43,69 @@ const DriverForm = () => {
           ref={register}
         />
         Senha
-        <input
-          className="input-form"
-          type="password"
-          placeholder="Senha"
-          name="password"
-          ref={register}
-        />
+        {visible ? (
+          <div>
+            <input
+              className="input-form"
+              type="text"
+              placeholder="Senha"
+              name="password"
+              ref={register}
+            />
+            <VisibilityIcon
+              className="icon-visible"
+              fontSize="large"
+              onClick={() => changeVisibility()}
+            />
+          </div>
+        ) : (
+          <div>
+            <input
+              className="input-form"
+              type="password"
+              placeholder="Senha"
+              name="password"
+              ref={register}
+            />
+            <VisibilityIcon
+              className="icon-visible"
+              fontSize="large"
+              onClick={() => changeVisibility()}
+            />
+          </div>
+        )}
         Confirmar Senha
-        <input
-          className="input-form"
-          placeholder="Confirmação Senha"
-          type="password"
-          name="password_confirmation"
-          ref={register}
-        />
+        {visible ? (
+          <div>
+            <input
+              className="input-form"
+              placeholder="Confirmação Senha"
+              type="text"
+              name="password_confirmation"
+              ref={register}
+            />
+            <VisibilityIcon
+              className="icon-visible"
+              fontSize="large"
+              onClick={() => changeVisibility()}
+            />
+          </div>
+        ) : (
+          <div>
+            <input
+              className="input-form"
+              placeholder="Confirmação Senha"
+              type="password"
+              name="password_confirmation"
+              ref={register}
+            />
+            <VisibilityIcon
+              className="icon-visible"
+              fontSize="large"
+              onClick={() => changeVisibility()}
+            />
+          </div>
+        )}
         <div>
           {errors.name?.message ||
             errors.email?.message ||
