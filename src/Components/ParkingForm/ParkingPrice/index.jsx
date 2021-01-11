@@ -1,6 +1,6 @@
 import "../../../Style/ParkingForm/style.css";
 
-const ParkingPrice = ({ handleSubmit, sendForm, register }) => {
+const ParkingPrice = ({ handleSubmit, sendForm, register, errors }) => {
   return (
     <div className="master">
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
@@ -51,6 +51,7 @@ const ParkingPrice = ({ handleSubmit, sendForm, register }) => {
             Mensal
           </option>
         </select>
+        <div>{errors.price?.message || errors.days?.message}</div>
         <button className="button-send" type="submit">
           CADASTRAR
         </button>
