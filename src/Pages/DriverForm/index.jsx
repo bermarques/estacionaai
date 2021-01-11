@@ -9,6 +9,7 @@ const DriverForm = () => {
   });
 
   const sendForm = (event) => {
+    delete event.password_confirmation;
     console.log(event);
   };
   return (
