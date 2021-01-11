@@ -29,14 +29,14 @@ const DriverForm = () => {
           name="password_confirmation"
           ref={register}
         />
-        {errors ? (
-          <div>
-            {errors.name?.message ||
-              errors.email?.message ||
-              errors.password?.message ||
-              errors.password_confirmation?.message}
-          </div>
-        ) : null}
+
+        <div>
+          {errors.name?.message ||
+            errors.email?.message ||
+            errors.password?.message ||
+            errors.password_confirmation?.message}
+        </div>
+
         <button type="submit">Enviar</button>
       </form>
     </div>

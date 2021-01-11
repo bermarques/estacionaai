@@ -3,28 +3,25 @@ import * as yup from "yup";
 export const schema = yup.object().shape({
   name: yup
     .string()
-    .min(4, "Mínimo de 4 caracteres.")
+    .min(4, "Mínimo de 4 caracteres para o Nome.")
     .matches(
       /^[a-z ,.'-]+$/i,
       "Caracteres especiais e números não são permitidos."
     )
-    .required("Esse campo é obrigatório!"),
+    .required("O campo Nome é obrigatório!"),
   email: yup
     .string()
     .email("Deve ser um e-mail válido!")
-    .required("Esse campo é obrigatório!"),
+    .required("O campo E-mail é obrigatório!"),
 
   password: yup
     .string()
-    .min(8, "Deve conter no mínimo 8 caracteres!")
-    .matches(
-      /^(?=.*?[a-z])(?=.*?[#?!@$ %^&*-]).{1,}$/,
-      "Pelo menos um caractere especial!"
-    )
-    .required("Esse campo é obrigatório!"),
+    .min(8, "A senha deve conter no mínimo 8 caracteres!")
+    .matches(/^(?=.*?[#?!@$ %^&*-]).{1,}$/, "Pelo menos um caractere especial!")
+    .required("O campo Senha é obrigatório!"),
 
   password_confirmation: yup
     .string()
-    .required()
+    .required("O campo Confirmação de senha é obrigatório!")
     .oneOf([yup.ref("password")], "A senha deve ser igual!"),
 });
