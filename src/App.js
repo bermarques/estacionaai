@@ -1,10 +1,10 @@
 import "./App.css";
-import DriverForm from "./Pages/DriverForm/index";
+import ParkingForm from "./Pages/ParkingForm/index";
 
 const App = () => {
   return (
     <div className="App">
-      <DriverForm />
+      <ParkingForm />
     </div>
   );
 };
