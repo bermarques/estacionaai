@@ -1,9 +1,11 @@
-import { Container, Icon } from "./style";
+import { Container } from "./style";
 
 const CarIcon = () => {
   return (
     <Container>
-      <Icon />
+      <div className="text-center">
+        <img src="/assets/logo.png" alt="logo" />
+      </div>
     </Container>
   );
 };
