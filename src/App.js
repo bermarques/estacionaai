@@ -1,10 +1,9 @@
 import "./App.css";
-import ParkingForm from "./Pages/ParkingForm/index";
-
+import ParkingLocation from "./Pages/ParkingForm/index";
 const App = () => {
   return (
     <div className="App">
-      <ParkingForm />
+      <ParkingLocation />
     </div>
   );
 };
