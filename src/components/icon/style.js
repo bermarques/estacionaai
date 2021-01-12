@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding-top: 72px;
+  padding: 72px 0 46px 0;
 `;
 
 // essa div é temporária, enquanto não tem o svg do icone
