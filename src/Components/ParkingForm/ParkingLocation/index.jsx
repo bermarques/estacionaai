@@ -2,26 +2,33 @@ import "../../../Style/ParkingForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../../Helpers/ParkingForm/index";
+import uploadImage from "../../../requests/uploadImages";
+import { useState } from "react";
 
-const ParkingLocation = ({}) => {
+const ParkingLocation = () => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-
   const sendForm = (event) => {
     delete event.password_confirmation;
     console.log(event);
   };
+  const [parkImage, setParkImage] = useState();
+  const changeImage = async (e) => {
+    setParkImage(await uploadImage(e));
+  };
   return (
     <div className="master">
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
+        {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
         Foto vaga
         <input
           className="input-form"
-          type="url"
+          type="file"
           placeholder="Url imagem"
           name="image"
           ref={register}
+          onChange={changeImage}
         />
         Rua
         <input
