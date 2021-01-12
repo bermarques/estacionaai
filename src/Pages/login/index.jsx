@@ -1,5 +1,5 @@
-import CarIcon from "../../components/icon";
-import LoginTabs from "../../components/login-tabs";
+import CarIcon from "../../Components/icon";
+import LoginTabs from "../../Components/login-tabs";
 
 const Login = () => {
   return (

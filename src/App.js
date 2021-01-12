@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Login from "./pages/login";
 import Register from "./pages/register";
-import EndingBar from "./components/ending-bar";
+import EndingBar from "./Components/ending-bar";
 
 function App() {
   return (
