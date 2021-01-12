@@ -1,13 +1,7 @@
 import "./App.css";
-import ParkingForm from "./Pages/ParkingForm/index";
-import DriverForm from "./Pages/DriverForm/index";
 
 const App = () => {
-  return (
-    <div className="App">
-      <DriverForm />
-    </div>
-  );
+  return <div className="App"></div>;
 };
 
 export default App;
