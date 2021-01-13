@@ -1,9 +1,9 @@
 import "./App.css";
-import ParkingLocation from "./Pages/ParkingForm/index";
+import Routes from "./Routes";
 const App = () => {
   return (
     <div className="App">
-      <ParkingLocation />
+      <Routes />
     </div>
   );
 };
