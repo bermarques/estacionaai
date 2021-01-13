@@ -1,10 +1,9 @@
 import "./App.css";
-import Login from "./Pages/Login/index";
-
+import Routes from "./Routes";
 const App = () => {
   return (
     <div className="App">
-      <Login />
+      <Routes />
     </div>
   );
 };
