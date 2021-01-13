@@ -28,3 +28,47 @@ export const schema = yup.object().shape({
     .min(1, "Mínimo de 1 diária!")
     .required("O campo de diária é obrigatório!"),
 });
+
+export const parkingFormdata = [
+  {
+    placeholder: "Url imagem",
+    name: "image",
+    type: "file",
+  },
+
+  {
+    placeholder: "Rua",
+    name: "street",
+    type: "text",
+  },
+  {
+    placeholder: "Número",
+    name: "number",
+    type: "number",
+  },
+  {
+    placeholder: "Bairro",
+    name: "neighborhood",
+    type: "text",
+  },
+  {
+    placeholder: "Cidade",
+    name: "city",
+    type: "text",
+  },
+  {
+    placeholder: "CEP",
+    name: "cep",
+    type: "number",
+  },
+  {
+    placeholder: "Preço",
+    name: "price",
+    type: "number",
+  },
+  {
+    placeholder: "Diárias",
+    name: "days",
+    type: "number",
+  },
+];

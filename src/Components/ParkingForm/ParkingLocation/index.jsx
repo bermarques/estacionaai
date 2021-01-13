@@ -1,7 +1,7 @@
 import "../../../Style/ParkingForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "../../../Helpers/ParkingForm/index";
+import { schema, parkingFormdata } from "../../../Helpers/ParkingForm/index";
 import uploadImage from "../../../requests/uploadImages";
 import { useState } from "react";
 
@@ -21,56 +21,14 @@ const ParkingLocation = () => {
     <div className="master">
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
         {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
-        Foto vaga
-        <input
-          className="input-form"
-          type="file"
-          placeholder="Url imagem"
-          name="image"
-          ref={register}
-          onChange={changeImage}
-        />
-        Rua
-        <input
-          className="input-form"
-          type="text"
-          placeholder="Rua"
-          name="street"
-          ref={register}
-        />
-        Número
-        <input
-          className="input-form"
-          type="number"
-          placeholder="Número"
-          name="number"
-          ref={register}
-        />
-        Bairro
-        <input
-          className="input-form"
-          type="text"
-          placeholder="Bairro"
-          name="neighborhood"
-          ref={register}
-        />
-        Cidade
-        <input
-          className="input-form"
-          type="text"
-          placeholder="Cidade"
-          name="city"
-          ref={register}
-        />
-        CEP
-        <input
-          className="input-form"
-          type="number"
-          placeholder="Número"
-          name="cep"
-          ref={register}
-        />
-        Estado
+        {parkingFormdata.map((placeholder, name, type, index) => (
+          <input
+            key={index}
+            name={name}
+            placeholder={placeholder}
+            type={type}
+          />
+        ))}
         <select className="input-form" name="state">
           <option ref={register} value="state">
             Selecione o Estado
