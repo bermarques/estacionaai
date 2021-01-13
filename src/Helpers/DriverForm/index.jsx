@@ -33,3 +33,37 @@ export const schema = yup.object().shape({
       "Placa inválida!, deve ser no padrão mercosul AAA0A00"
     ),
 });
+
+export const driverFormData = [
+  {
+    placeholder: "Nome",
+    name: "name",
+    type: "text",
+  },
+
+  {
+    placeholder: "E-mail",
+    name: "email",
+    type: "email",
+  },
+  /*{
+    placeholder: "Senha",
+    name: "password",
+    type: "password",
+  },
+    {
+    placeholder: "Repetir senha",
+    name: "password_confirmation",
+    type: "password",
+  },*/
+  {
+    placeholder: "Veículo",
+    name: "car",
+    type: "text",
+  },
+  {
+    placeholder: "Placa",
+    name: "plate",
+    type: "text",
+  },
+];
