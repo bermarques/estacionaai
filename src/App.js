@@ -1,10 +1,10 @@
 import "./App.css";
-import DriverForm from "./Pages/DriverForm/index";
+import Login from "./Pages/Login/index";
 
 const App = () => {
   return (
     <div className="App">
-      <DriverForm />
+      <Login />
     </div>
   );
 };
