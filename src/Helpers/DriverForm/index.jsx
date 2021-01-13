@@ -24,4 +24,12 @@ export const schema = yup.object().shape({
     .string()
     .required("O campo Confirmação de senha é obrigatório!")
     .oneOf([yup.ref("password")], "A senha deve ser igual!"),
+  car: yup.string().required("Esse campo é obrigatório!"),
+  plate: yup
+    .string()
+    .required("Esse ccampo é obrigatório!")
+    .matches(
+      /^([A-Z]{3}[0-9][0-9A-Z][0-9]{2})$/,
+      "Placa inválida!, deve ser no padrão mercosul AAA0A00"
+    ),
 });
