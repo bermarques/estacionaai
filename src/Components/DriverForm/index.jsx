@@ -7,6 +7,7 @@ import { useState } from "react";
 import registerRequest from "../../requests/Register";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const DriverFormComponent = () => {
   const [visible, setVisible] = useState(false);
@@ -35,7 +36,9 @@ const DriverFormComponent = () => {
 
   return (
     <div className="master">
-      <Alert variant="danger">{feedBackMessage}</Alert>
+      <Alert show={true} variant={"danger"}>
+        {feedBackMessage}asdf
+      </Alert>
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
         Nome
         <input
