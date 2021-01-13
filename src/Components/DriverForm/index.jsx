@@ -4,16 +4,25 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../Helpers/DriverForm/index";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
+import registerRequest from "../../requests/Register";
+import { useHistory } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 
 const DriverFormComponent = () => {
   const [visible, setVisible] = useState(false);
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
-  });
+  const { register, handleSubmit, errors } = useForm({});
+  const [feedBackMessage, setFeedBackMessage] = useState();
 
-  const sendForm = (event) => {
-    delete event.password_confirmation;
-    console.log(event);
+  const history = useHistory();
+  const sendForm = async (event) => {
+    const message = await registerRequest(event);
+    message === 201 && history.push("/login");
+    console.log(message);
+    if (message === "Email already exists") {
+      console.log(feedBackMessage);
+      setFeedBackMessage("Email já cadastrado");
+      setTimeout(() => setFeedBackMessage(""), 3000);
+    }
   };
 
   const changeVisibility = () => {
@@ -23,8 +32,10 @@ const DriverFormComponent = () => {
       setVisible(true);
     }
   };
+
   return (
     <div className="master">
+      <Alert variant="danger">{feedBackMessage}</Alert>
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
         Nome
         <input
