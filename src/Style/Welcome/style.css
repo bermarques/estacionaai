@@ -1,0 +1,58 @@
+.welcome {
+  background-image: url("../IMG/welcome.png");
+  width: 49.938rem;
+  height: 33.375rem;
+  margin-left: 25%;
+}
+
+.master {
+  display: flex;
+  justify-content: center;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.813rem;
+  line-height: 1.688rem;
+  color: #484848;
+  background-color: #e5e5e5;
+}
+
+.welcome-button {
+  width: 15.625rem;
+  height: 2.188rem;
+  background-color: #152764;
+  color: #ffff;
+  font-size: 1.125rem;
+  border-radius: 0.563rem;
+  margin-top: 1rem;
+  margin-left: 42.5%;
+  cursor: pointer;
+}
+
+.welcome-button:hover {
+  background-color: #05668d;
+}
+
+.title {
+  font-family: Baloo;
+  font-size: 26px;
+  line-height: 28px;
+  color: #152764;
+  text-align: center;
+}
+
+.logo {
+  width: 5rem;
+  height: 5rem;
+  background-color: #ff2e93;
+  margin-top: 2%;
+  margin-left: 48%;
+  margin-bottom: 2%;
+  border-radius: 0.75rem;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
