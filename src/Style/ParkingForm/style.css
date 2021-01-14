@@ -57,3 +57,26 @@
   height: 5.25px;
   cursor: pointer;
 }
+
+.errors {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 27px;
+  color: red;
+}
+
+.check-form {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 27px;
+  font-size: 15px;
+}
+
+.check-input {
+  width: 25px;
+  height: 25px;
+  border-radius: 70%;
+}
