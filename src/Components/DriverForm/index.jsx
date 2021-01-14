@@ -120,11 +120,29 @@ const DriverFormComponent = () => {
             />
           </div>
         )}
+        Veículo
+        <input
+          className="input-form"
+          type="text"
+          placeholder="Modelo"
+          name="car"
+          ref={register}
+        />
+        Placa
+        <input
+          className="input-form"
+          type="text"
+          placeholder="Placa"
+          name="plate"
+          ref={register}
+        />
         <div>
           {errors.name?.message ||
             errors.email?.message ||
             errors.password?.message ||
-            errors.password_confirmation?.message}
+            errors.password_confirmation?.message ||
+            errors.car?.message ||
+            errors.plate?.message}
         </div>
         <button className="button-send" type="submit">
           CADASTRAR
