@@ -4,17 +4,22 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
+import requestUser from "../../requests/Register";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
+  const [loginData, setLoginData] = useState({ email: "", senha: "" });
+
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const sendForm = (event) => {
-    delete event.password_confirmation;
-    console.log(event);
-  };
+  // const sendForm = (event) => {
+  //   delete event.password_confirmation;
+  //   requestUser(loginData, "login");
+  //   console.log(loginData);
+  //   console.log(event);
+  // };
 
   const changeVisibility = () => {
     if (visible === true) {
@@ -24,9 +29,23 @@ const LoginForm = () => {
     }
   };
 
+  const handleEmail = (evt) => {
+    setLoginData({ ...loginData, email: evt.target.value });
+  };
+
+  const handlePassword = (evt) => {
+    setLoginData({ ...loginData, senha: evt.target.value });
+  };
+
   return (
     <div className="master">
-      <form className="master-form" onSubmit={handleSubmit(sendForm)}>
+      <form
+        className="master-form"
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          requestUser(loginData, "login");
+        }}
+      >
         E-mail
         <input
           className="input-form"
@@ -34,6 +53,8 @@ const LoginForm = () => {
           placeholder="E-mail"
           name="email"
           ref={register}
+          onChange={handleEmail}
+          value={loginData.email}
         />
         Senha
         {visible ? (
@@ -44,6 +65,8 @@ const LoginForm = () => {
               placeholder="Senha"
               name="password"
               ref={register}
+              onChange={handlePassword}
+              value={loginData.senha}
             />
             <VisibilityIcon
               className="icon-visible"
@@ -59,6 +82,8 @@ const LoginForm = () => {
               placeholder="Senha"
               name="password"
               ref={register}
+              onChange={handlePassword}
+              value={loginData.senha}
             />
             <VisibilityIcon
               className="icon-visible"
