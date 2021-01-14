@@ -1,7 +1,11 @@
 import "../../../Style/ParkingForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema, parkingFormdata } from "../../../Helpers/ParkingForm/index";
+import {
+  schema,
+  parkingFormdata,
+  States,
+} from "../../../Helpers/ParkingForm/index";
 import uploadImage from "../../../requests/uploadImages";
 import { useState } from "react";
 
@@ -22,100 +26,25 @@ const ParkingLocation = () => {
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
         {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
         {parkingFormdata.map(({ placeholder, name, type }, index) => (
-          <input
-            className="input-form"
-            key={index}
-            name={name}
-            placeholder={placeholder}
-            type={type}
-            ref={register}
-          />
+          <div>
+            <div>{placeholder}</div>
+            <input
+              className="input-form"
+              key={index}
+              name={name}
+              placeholder={placeholder}
+              type={type}
+              ref={register}
+            />
+          </div>
         ))}
+        Estado
         <select className="input-form" name="state">
-          <option ref={register} value="state">
-            Selecione o Estado
-          </option>
-          <option ref={register} value="ac">
-            Acre
-          </option>
-          <option ref={register} value="al">
-            Alagoas
-          </option>
-          <option ref={register} value="am">
-            Amazonas
-          </option>
-          <option ref={register} value="ap">
-            Amapá
-          </option>
-          <option ref={register} value="ba">
-            Bahia
-          </option>
-          <option ref={register} value="ce">
-            Ceará
-          </option>
-          <option ref={register} value="df">
-            Distrito Federal
-          </option>
-          <option ref={register} value="es">
-            Espírito Santo
-          </option>
-          <option ref={register} value="go">
-            Goiás
-          </option>
-          <option ref={register} value="ma">
-            Maranhão
-          </option>
-          <option ref={register} value="mt">
-            Mato Grosso
-          </option>
-          <option ref={register} value="ms">
-            Mato Grosso do Sul
-          </option>
-          <option ref={register} value="mg">
-            Minas Gerais
-          </option>
-          <option ref={register} value="pa">
-            Pará
-          </option>
-          <option ref={register} value="pb">
-            Paraíba
-          </option>
-          <option ref={register} value="pr">
-            Paraná
-          </option>
-          <option ref={register} value="pe">
-            Pernambuco
-          </option>
-          <option ref={register} value="pi">
-            Piauí
-          </option>
-          <option ref={register} value="rj">
-            Rio de Janeiro
-          </option>
-          <option ref={register} value="rn">
-            Rio Grande do Norte
-          </option>
-          <option ref={register} value="ro">
-            Rondônia
-          </option>
-          <option ref={register} value="rs">
-            Rio Grande do Sul
-          </option>
-          <option ref={register} value="rr">
-            Roraima
-          </option>
-          <option ref={register} value="sc">
-            Santa Catarina
-          </option>
-          <option ref={register} value="se">
-            Sergipe
-          </option>
-          <option ref={register} value="sp">
-            São Paulo
-          </option>
-          <option ref={register} value="to">
-            Tocantins
-          </option>
+          {States.map(({ value, name }, index) => (
+            <option key={index} ref={register} value={value}>
+              {name}
+            </option>
+          ))}
         </select>
         Valor
         <input
@@ -150,21 +79,42 @@ const ParkingLocation = () => {
           </option>
         </select>
         Tipo de locação
-        <select className="input-form" name="rent-type">
-          <option ref={register} value="rent">
-            Selecione o tipo de Locação
-          </option>
-          <option ref={register} value="daily">
+        <div className="check-form">
+          <input
+            className="check-input"
+            name="daily"
+            type="checkbox"
+            ref={register}
+          />
+          <label for="daily" value="daily">
             Diária
-          </option>
-          <option ref={register} value="weekly">
+          </label>
+        </div>
+        <div className="check-form">
+          <input
+            className="check-input"
+            name="weekly"
+            type="checkbox"
+            ref={register}
+            value="weekly"
+          />
+          <label for="weekly" value="weekly">
             Semanal
-          </option>
-          <option ref={register} value="monthly">
+          </label>
+        </div>
+        <div className="check-form">
+          <input
+            className="check-input"
+            name="monthly"
+            type="checkbox"
+            ref={register}
+            value="monthly"
+          />
+          <label for="monthly" value="monthly">
             Mensal
-          </option>
-        </select>
-        <div>
+          </label>
+        </div>
+        <div className="errors">
           {errors.image?.message ||
             errors.street?.message ||
             errors.number?.message ||
