@@ -21,12 +21,14 @@ const ParkingLocation = () => {
     <div className="master">
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
         {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
-        {parkingFormdata.map((placeholder, name, type, index) => (
+        {parkingFormdata.map(({ placeholder, name, type }, index) => (
           <input
+            className="input-form"
             key={index}
             name={name}
             placeholder={placeholder}
             type={type}
+            ref={register}
           />
         ))}
         <select className="input-form" name="state">
