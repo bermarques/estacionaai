@@ -40,12 +40,14 @@ const DriverFormComponent = () => {
         {feedBackMessage}asdf
       </Alert>
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
-        {driverFormData.map((placeholder, name, type, index) => (
+        {driverFormData.map(({ placeholder, name, type }, index) => (
           <input
+            className="input-form"
             key={index}
             placeholder={placeholder}
             name={name}
             type={type}
+            ref={register}
           />
         ))}
         Senha

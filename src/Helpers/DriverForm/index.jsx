@@ -5,7 +5,7 @@ export const schema = yup.object().shape({
     .string()
     .min(4, "Mínimo de 4 caracteres para o Nome.")
     .matches(
-      /^[a-z ,.'-]+$/i,
+      /^[A-Z][a-z]* [A-Z][a-z]*$/i,
       "Caracteres especiais e números não são permitidos."
     )
     .required("O campo Nome é obrigatório!"),
@@ -17,7 +17,10 @@ export const schema = yup.object().shape({
   password: yup
     .string()
     .min(8, "A senha deve conter no mínimo 8 caracteres!")
-    .matches(/^(?=.*?[#?!@$ %^&*-]).{1,}$/, "Pelo menos um caractere especial!")
+    .matches(
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/,
+      "Pelo menos uma letra maíuscula e um número!"
+    )
     .required("O campo Senha é obrigatório!"),
 
   password_confirmation: yup
@@ -29,7 +32,7 @@ export const schema = yup.object().shape({
     .string()
     .required("Esse ccampo é obrigatório!")
     .matches(
-      /^([A-Z]{3}[0-9][0-9A-Z][0-9]{2})$/,
+      /^([A-Z]{3}[0-9][0-9A-Z][0-9]{2})$/ || /^[a-zA-Z]{3}[0-9]{4}$/,
       "Placa inválida!, deve ser no padrão mercosul AAA0A00"
     ),
 });
