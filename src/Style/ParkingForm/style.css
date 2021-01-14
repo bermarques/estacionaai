@@ -6,17 +6,24 @@
 }
 
 .master {
-  margin-top: 10%;
-  display: block;
-  justify-content: center;
+  position: absolute;
+  left: 11.94%;
+  right: 11.94%;
+  top: 35.85%;
+  bottom: 59.89;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 27px;
+  color: #484848;
 }
 
 .master-form {
   display: flex;
   flex-direction: column;
-
-  margin-top: 1%;
-  margin-left: 5%;
+  margin-top: -20%;
+  margin-left: 40%;
   justify-content: center;
   text-align: left;
 }
@@ -40,6 +47,8 @@
   width: 275px;
   height: 45px;
   border-radius: 28.5px;
+  background-color: #ffff;
+  box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
 }
 
 .icon-visible {
