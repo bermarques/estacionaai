@@ -21,6 +21,7 @@ const ParkingLocation = () => {
   const changeImage = async (e) => {
     setParkImage(await uploadImage(e));
   };
+
   return (
     <div className="master">
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
@@ -54,30 +55,43 @@ const ParkingLocation = () => {
           name="price"
           ref={register}
         />
-        Dias disponíveis
-        <input
-          className="input-form"
-          type="number"
-          placeholder="Dias disponíveis"
-          min="1"
-          name="days"
-          ref={register}
-        />
-        Vaga
-        <select className="input-form" name="park">
-          <option ref={register} value="park">
-            Selecione o tamanho da vaga.
-          </option>
-          <option ref={register} value="small">
-            Pequeno porte.
-          </option>
-          <option ref={register} value="medium">
-            Medio porte.
-          </option>
-          <option ref={register} value="big">
-            Grande porte.
-          </option>
-        </select>
+        Veículos Aceitos
+        <div className="check-form">
+          <input
+            className="check-input"
+            name="car"
+            type="checkbox"
+            ref={register}
+            value="monthly"
+          />
+          <label for="car" value="car">
+            Carro
+          </label>
+        </div>
+        <div className="check-form">
+          <input
+            className="check-input"
+            name="motorcycle"
+            type="checkbox"
+            ref={register}
+            value="motorcycle"
+          />
+          <label for="motorcycle" value="motorcycle">
+            Moto
+          </label>
+        </div>
+        <div className="check-form">
+          <input
+            className="check-input"
+            name="truck"
+            type="checkbox"
+            ref={register}
+            value="truck"
+          />
+          <label for="truck" value="truck">
+            Caminhonete
+          </label>
+        </div>
         Tipo de locação
         <div className="check-form">
           <input
