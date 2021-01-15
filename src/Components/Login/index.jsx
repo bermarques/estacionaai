@@ -8,18 +8,16 @@ import requestUser from "../../requests/Register";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
-  const [loginData, setLoginData] = useState({ email: "", senha: "" });
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
 
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
-  // const sendForm = (event) => {
-  //   delete event.password_confirmation;
-  //   requestUser(loginData, "login");
-  //   console.log(loginData);
-  //   console.log(event);
-  // };
+  const sendForm = async (event) => {
+    event.preventDefault();
+    await requestUser(loginData, "login");
+  };
 
   const changeVisibility = () => {
     if (visible === true) {
@@ -34,7 +32,7 @@ const LoginForm = () => {
   };
 
   const handlePassword = (evt) => {
-    setLoginData({ ...loginData, senha: evt.target.value });
+    setLoginData({ ...loginData, password: evt.target.value });
   };
 
   return (
@@ -43,7 +41,7 @@ const LoginForm = () => {
         className="master-form"
         onSubmit={(evt) => {
           evt.preventDefault();
-          requestUser(loginData, "login");
+          handleSubmit(sendForm(evt));
         }}
       >
         E-mail
@@ -66,7 +64,7 @@ const LoginForm = () => {
               name="password"
               ref={register}
               onChange={handlePassword}
-              value={loginData.senha}
+              value={loginData.password}
             />
             <VisibilityIcon
               className="icon-visible"
@@ -81,9 +79,9 @@ const LoginForm = () => {
               type="password"
               placeholder="Senha"
               name="password"
-              ref={register}
               onChange={handlePassword}
-              value={loginData.senha}
+              value={loginData.password}
+              ref={register}
             />
             <VisibilityIcon
               className="icon-visible"
