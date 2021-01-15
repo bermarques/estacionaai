@@ -1,46 +1,8 @@
-.render {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 0%;
-}
-
 .master {
-  position: absolute;
-  left: 11.94%;
-  right: 11.94%;
-  top: 35.85%;
-  bottom: 59.89;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 27px;
-  color: #484848;
-}
-
-.master-form {
   display: flex;
   flex-direction: column;
-  margin-top: -20%;
-  margin-left: 40%;
+  align-items: center;
   justify-content: center;
-  text-align: left;
-}
-
-.button-send {
-  margin-top: 20px;
-  background-color: #152764;
-  color: white;
-  height: 45px;
-  border-radius: 28.5px;
-  width: 250px;
-  margin-left: 1%;
-  cursor: pointer;
-}
-
-.button-send:hover {
-  background-color: #05668d;
 }
 
 .input-form {
