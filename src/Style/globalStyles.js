@@ -1,4 +1,5 @@
 import styled, { css, createGlobalStyle } from "styled-components";
+import { Alert } from "react-bootstrap";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -60,4 +61,12 @@ export const StyledButton = styled.button`
   ${(props) => css`
     width: props.width;
   `}
+`;
+
+export const StyleAlert = styled(Alert)`
+  position: absolute;
+  top: 50vh;
+  width: 80%;
+  left: 10%;
+  opacity: 0.7;
 `;

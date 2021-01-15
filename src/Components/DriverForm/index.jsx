@@ -3,34 +3,32 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../Helpers/DriverForm/index";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import registerRequest from "../../requests/Register";
 import { useHistory } from "react-router-dom";
-import { Alert } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {
   StyledLabel,
   StyledInput,
   StyledForm,
   StyledButton,
 } from "../../Style/globalStyles";
+import { useDispatch } from "react-redux";
+import { handleAddError } from "../../Store/modules/errorMessage/actions";
 
 const DriverFormComponent = () => {
   const [visible, setVisible] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-  const [feedBackMessage, setFeedBackMessage] = useState();
 
   const history = useHistory();
   const sendForm = async (event) => {
-    const message = await registerRequest(event);
-    message === 201 && history.push("/login");
-    if (message === "Email already exists") {
-      console.log(feedBackMessage);
-      setFeedBackMessage("Email já cadastrado");
-      setTimeout(() => setFeedBackMessage(undefined), 3000);
+    const response = await registerRequest(event, "register");
+    if (response === "Email already exists") {
+      dispatch(handleAddError("Email já cadastrado"));
     }
+    setTimeout(() => dispatch(handleAddError("")), 4000);
+    response.status === 201 && history.push("/login");
   };
 
   const changeVisibility = () => {
@@ -41,9 +39,21 @@ const DriverFormComponent = () => {
     }
   };
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const message =
+      errors.name?.message ||
+      errors.email?.message ||
+      errors.password?.message ||
+      errors.password_confirmation?.message ||
+      errors.car?.message ||
+      errors.plate?.message;
+    dispatch(handleAddError(message));
+    setTimeout(() => dispatch(handleAddError("")), 4000);
+  }, [errors]);
+
   return (
     <div>
-      {feedBackMessage && <Alert variant={"danger"}>{feedBackMessage}</Alert>}
       <StyledForm onSubmit={handleSubmit(sendForm)}>
         <StyledLabel>Nome</StyledLabel>
         <StyledInput
@@ -104,14 +114,6 @@ const DriverFormComponent = () => {
           name="plate"
           ref={register}
         />
-        <div>
-          {errors.name?.message ||
-            errors.email?.message ||
-            errors.password?.message ||
-            errors.password_confirmation?.message ||
-            errors.car?.message ||
-            errors.plate?.message}
-        </div>
         <StyledButton type="submit">CADASTRAR</StyledButton>
       </StyledForm>
     </div>
