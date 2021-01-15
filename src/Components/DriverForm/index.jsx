@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const DriverFormComponent = () => {
   const [visible, setVisible] = useState(false);
-  const { register, handleSubmit, errors } = useForm({resolver:yupResolver(schema});
+  const { register, handleSubmit, errors } = useForm({resolver:yupResolver(schema)});
   const [feedBackMessage, setFeedBackMessage] = useState();
 
   const history = useHistory();
