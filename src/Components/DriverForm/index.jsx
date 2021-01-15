@@ -18,7 +18,6 @@ const DriverFormComponent = () => {
   const sendForm = async (event) => {
     const message = await requestUser(event, "register");
     message === 201 && history.push("/login");
-    console.log(message);
     if (message === "Email already exists") {
       console.log(feedBackMessage);
       setFeedBackMessage("Email já cadastrado");
