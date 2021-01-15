@@ -44,6 +44,7 @@
 .logo {
   width: 5rem;
   height: 5rem;
+  background-image: url("../IMG/logo.png");
   background-color: #ff2e93;
   margin-top: 2%;
   margin-left: 48%;
