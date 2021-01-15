@@ -9,12 +9,13 @@ import { useSelector } from "react-redux";
 import { StyleAlert } from "../Style/globalStyles";
 
 const Routes = () => {
-  const { message } = useSelector((state) => state.errorMessage);
+  const { message, typeMessage } = useSelector((state) => state.errorMessage);
+  console.log(typeMessage);
 
   return (
     <>
       <GlobalStyle />
-      {message && <StyleAlert variant={"danger"}>{message}</StyleAlert>}
+      {message && <StyleAlert variant={typeMessage}>{message}</StyleAlert>}
       <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login">
