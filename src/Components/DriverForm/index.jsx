@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema, driverFormData } from "../../Helpers/DriverForm/index";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
-import registerRequest from "../../requests/Register";
+import requestUser from "../../requests/Register";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,9 +16,8 @@ const DriverFormComponent = () => {
 
   const history = useHistory();
   const sendForm = async (event) => {
-    const message = await registerRequest(event);
+    const message = await requestUser(event, "register");
     message === 201 && history.push("/login");
-    console.log(message);
     if (message === "Email already exists") {
       console.log(feedBackMessage);
       setFeedBackMessage("Email já cadastrado");
