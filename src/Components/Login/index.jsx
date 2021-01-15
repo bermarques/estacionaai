@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
-import axios from "axios";
+import requestUser from "../../requests/Register";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
@@ -14,18 +14,13 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const sendForm = (event) => {
+  const sendForm = async (event) => {
     event.preventDefault();
-
-    axios
-      .post("https://server-estaciona-ai.herokuapp.com/login", loginData)
-      .then((res) => {
-        console.log(loginData);
-        if (res.status === 200) {
-          localStorage.setItem("token", res.data.accessToken);
-        }
-      })
-      .catch((error) => error.response.data);
+    const res = await requestUser(loginData, "login");
+    if (res.status === 200) {
+      localStorage.setItem("token", res.data.accessToken);
+    }
+    console.log(res);
   };
 
   const changeVisibility = () => {
