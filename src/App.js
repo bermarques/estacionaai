@@ -1,10 +1,9 @@
-import "./App.css";
 import Routes from "./Routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Routes />
     </div>
   );
