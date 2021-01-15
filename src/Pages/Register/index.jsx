@@ -1,13 +1,17 @@
 import CarIcon from "../../Components/icon";
 import LoginTabs from "../../Components/login-tabs";
-import DriverForm from "../../Components/DriverForm";
+
+import "../../Style/DriverForm/style.css";
+import DriverFormComponent from "../../Components/DriverForm/index";
 
 const Register = () => {
   return (
     <>
       <CarIcon />
       <LoginTabs />
-      <DriverForm />
+      <div className="master">
+        <DriverFormComponent />
+      </div>
       <div className="text-center">
         <img src="/assets/img-sign1.png" alt="carinha feliz" />
       </div>

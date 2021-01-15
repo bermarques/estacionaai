@@ -1,7 +1,7 @@
 import "../../Style/DriverForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "../../Helpers/DriverForm/index";
+import { schema, driverFormData } from "../../Helpers/DriverForm/index";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
 import registerRequest from "../../requests/Register";
@@ -40,22 +40,16 @@ const DriverFormComponent = () => {
         {feedBackMessage}asdf
       </Alert>
       <form className="master-form" onSubmit={handleSubmit(sendForm)}>
-        Nome
-        <input
-          className="input-form"
-          type="text"
-          placeholder="Nome"
-          name="name"
-          ref={register}
-        />
-        E-mail
-        <input
-          className="input-form"
-          type="email"
-          placeholder="E-mail"
-          name="email"
-          ref={register}
-        />
+        {driverFormData.map(({ placeholder, name, type }, index) => (
+          <input
+            className="input-form"
+            key={index}
+            placeholder={placeholder}
+            name={name}
+            type={type}
+            ref={register}
+          />
+        ))}
         Senha
         {visible ? (
           <div>
@@ -120,22 +114,6 @@ const DriverFormComponent = () => {
             />
           </div>
         )}
-        Veículo
-        <input
-          className="input-form"
-          type="text"
-          placeholder="Modelo"
-          name="car"
-          ref={register}
-        />
-        Placa
-        <input
-          className="input-form"
-          type="text"
-          placeholder="Placa"
-          name="plate"
-          ref={register}
-        />
         <div>
           {errors.name?.message ||
             errors.email?.message ||

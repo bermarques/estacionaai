@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Rectangle = styled.div`
-  position: absolute;
+  position: relative;
+  margin-top: 48px;
   width: 134px;
   height: 5px;
   left: calc(50% - 134px / 2 + 0.5px);
