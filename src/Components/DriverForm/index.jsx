@@ -1,22 +1,30 @@
 import "../../Style/DriverForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema, driverFormData } from "../../Helpers/DriverForm/index";
+import { schema } from "../../Helpers/DriverForm/index";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
-import requestUser from "../../requests/Register";
+import registerRequest from "../../requests/Register";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  StyledLabel,
+  StyledInput,
+  StyledForm,
+  StyledButton,
+} from "../../Style/globalStyles";
 
 const DriverFormComponent = () => {
   const [visible, setVisible] = useState(false);
-  const { register, handleSubmit, errors } = useForm({});
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
   const [feedBackMessage, setFeedBackMessage] = useState();
 
   const history = useHistory();
   const sendForm = async (event) => {
-    const message = await requestUser(event, "register");
+    const message = await registerRequest(event);
     message === 201 && history.push("/login");
     console.log(message);
     if (message === "Email already exists") {
@@ -35,85 +43,70 @@ const DriverFormComponent = () => {
   };
 
   return (
-    <div className="master">
+    <div>
       <Alert show={true} variant={"danger"}>
         {feedBackMessage}asdf
       </Alert>
-      <form className="master-form" onSubmit={handleSubmit(sendForm)}>
-        {driverFormData.map(({ placeholder, name, type }, index) => (
-          <input
-            className="input-form"
-            key={index}
-            placeholder={placeholder}
-            name={name}
-            type={type}
+      <StyledForm onSubmit={handleSubmit(sendForm)}>
+        <StyledLabel>Nome</StyledLabel>
+        <StyledInput
+          type="text"
+          placeholder="Nome"
+          name="name"
+          ref={register}
+        />
+        <StyledLabel>E-mail</StyledLabel>
+        <StyledInput
+          type="email"
+          placeholder="E-mail"
+          name="email"
+          ref={register}
+        />
+        <StyledLabel>Senha</StyledLabel>
+
+        <div>
+          <StyledInput
+            type={visible ? "text" : "password"}
+            placeholder="Senha"
+            name="password"
             ref={register}
           />
-        ))}
-        Senha
-        {visible ? (
-          <div>
-            <input
-              className="input-form"
-              type="text"
-              placeholder="Senha"
-              name="password"
-              ref={register}
-            />
-            <VisibilityIcon
-              className="icon-visible"
-              fontSize="large"
-              onClick={() => changeVisibility()}
-            />
-          </div>
-        ) : (
-          <div>
-            <input
-              className="input-form"
-              type="password"
-              placeholder="Senha"
-              name="password"
-              ref={register}
-            />
-            <VisibilityIcon
-              className="icon-visible"
-              fontSize="large"
-              onClick={() => changeVisibility()}
-            />
-          </div>
-        )}
-        Confirmar Senha
-        {visible ? (
-          <div>
-            <input
-              className="input-form"
-              placeholder="Confirmação Senha"
-              type="text"
-              name="password_confirmation"
-              ref={register}
-            />
-            <VisibilityIcon
-              className="icon-visible"
-              fontSize="large"
-              onClick={() => changeVisibility()}
-            />
-          </div>
-        ) : (
-          <div>
-            <input
-              className="input-form"
-              placeholder="Confirmação Senha"
-              type="password"
-              name="password_confirmation"
-              ref={register}
-            />
-            <VisibilityIcon
-              className="icon-visible"
-              fontSize="large"
-              onClick={() => changeVisibility()}
-            />
-          </div>
-        )}
+          <VisibilityIcon
+            className="icon-visible"
+            fontSize="large"
+            onClick={() => changeVisibility()}
+          />
+        </div>
+        <StyledLabel>Confirmar Senha</StyledLabel>
+
+        <div>
+          <StyledInput
+            placeholder="Confirmação Senha"
+            type={visible ? "text" : "password"}
+            name="password_confirmation"
+            ref={register}
+          />
+          <VisibilityIcon
+            className="icon-visible"
+            fontSize="large"
+            onClick={() => changeVisibility()}
+          />
+        </div>
+
+        <StyledLabel>Veículo</StyledLabel>
+        <StyledInput
+          type="text"
+          placeholder="Modelo"
+          name="car"
+          ref={register}
+        />
+        <StyledLabel>Placa</StyledLabel>
+        <StyledInput
+          type="text"
+          placeholder="Placa"
+          name="plate"
+          ref={register}
+        />
         <div>
           {errors.name?.message ||
             errors.email?.message ||
@@ -122,10 +115,8 @@ const DriverFormComponent = () => {
             errors.car?.message ||
             errors.plate?.message}
         </div>
-        <button className="button-send" type="submit">
-          CADASTRAR
-        </button>
-      </form>
+        <StyledButton type="submit">CADASTRAR</StyledButton>
+      </StyledForm>
     </div>
   );
 };
