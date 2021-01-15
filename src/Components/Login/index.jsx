@@ -4,16 +4,28 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
+import axios from "axios";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
-  const { register, handleSubmit, errors } = useForm({
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
   const sendForm = (event) => {
-    delete event.password_confirmation;
-    console.log(event);
+    event.preventDefault();
+
+    axios
+      .post("https://server-estaciona-ai.herokuapp.com/login", loginData)
+      .then((res) => {
+        console.log(loginData);
+        if (res.status === 200) {
+          localStorage.setItem("token", res.data.accessToken);
+        }
+      })
+      .catch((error) => error.response.data);
   };
 
   const changeVisibility = () => {
@@ -24,9 +36,23 @@ const LoginForm = () => {
     }
   };
 
+  const handleEmail = (evt) => {
+    setLoginData({ ...loginData, email: evt.target.value });
+  };
+
+  const handlePassword = (evt) => {
+    setLoginData({ ...loginData, password: evt.target.value });
+  };
+
   return (
     <div className="master">
-      <form className="master-form" onSubmit={handleSubmit(sendForm)}>
+      <form
+        className="master-form"
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          handleSubmit(sendForm(evt));
+        }}
+      >
         E-mail
         <input
           className="input-form"
@@ -34,6 +60,8 @@ const LoginForm = () => {
           placeholder="E-mail"
           name="email"
           ref={register}
+          onChange={handleEmail}
+          value={loginData.email}
         />
         Senha
         {visible ? (
@@ -44,6 +72,8 @@ const LoginForm = () => {
               placeholder="Senha"
               name="password"
               ref={register}
+              onChange={handlePassword}
+              value={loginData.password}
             />
             <VisibilityIcon
               className="icon-visible"
@@ -58,6 +88,8 @@ const LoginForm = () => {
               type="password"
               placeholder="Senha"
               name="password"
+              onChange={handlePassword}
+              value={loginData.password}
               ref={register}
             />
             <VisibilityIcon
