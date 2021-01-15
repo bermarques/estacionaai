@@ -1,6 +1,5 @@
 import { Switch, Route } from "react-router-dom";
 import GlobalStyle from "../Style/globalStyles";
-import Welcome from "../Pages/Welcome/index";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import ParkingForm from "../Pages/ParkingForm/index";
@@ -11,7 +10,6 @@ const Routes = () => {
     <>
       <GlobalStyle />
       <Switch>
-        <Route exact path="/" component={Welcome} />
         <Route exact path="/login">
           <Login />
         </Route>
