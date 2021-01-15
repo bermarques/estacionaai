@@ -29,7 +29,7 @@ const DriverFormComponent = () => {
     if (message === "Email already exists") {
       console.log(feedBackMessage);
       setFeedBackMessage("Email já cadastrado");
-      setTimeout(() => setFeedBackMessage(""), 3000);
+      setTimeout(() => setFeedBackMessage(undefined), 3000);
     }
   };
 
@@ -43,9 +43,7 @@ const DriverFormComponent = () => {
 
   return (
     <div>
-      <Alert show={true} variant={"danger"}>
-        {feedBackMessage}asdf
-      </Alert>
+      {feedBackMessage && <Alert variant={"danger"}>{feedBackMessage}</Alert>}
       <StyledForm onSubmit={handleSubmit(sendForm)}>
         <StyledLabel>Nome</StyledLabel>
         <StyledInput

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -17,6 +17,14 @@ export const StyledInput = styled.input`
   border-radius: 28.5px;
   border: none;
   margin: 10px 20px;
+  outline: none;
+  padding-left: 10px;
+
+  :focus {
+    border: 1px solid #ff2e93;
+
+    border-radius: 28.5px;
+  }
 `;
 
 export const StyledLabel = styled.label`
@@ -40,6 +48,7 @@ export const StyledButton = styled.button`
   background-color: #152764;
   color: white;
   height: 45px;
+  border: none;
   border-radius: 28.5px;
   width: 250px;
   margin-left: 1%;
@@ -48,4 +57,7 @@ export const StyledButton = styled.button`
   :hover {
     background-color: #05668d;
   }
+  ${(props) => css`
+    width: props.width;
+  `}
 `;
