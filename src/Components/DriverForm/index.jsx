@@ -25,7 +25,7 @@ const DriverFormComponent = () => {
   const sendForm = async (event) => {
     const response = await registerRequest(event, "register");
     if (response === "Email already exists") {
-      dispatch(handleAddError("Email já cadastrado"));
+      dispatch(handleAddError("Email já cadastrado", "danger"));
     }
     setTimeout(() => dispatch(handleAddError("")), 4000);
     response.status === 201 && history.push("/login");
@@ -48,7 +48,7 @@ const DriverFormComponent = () => {
       errors.password_confirmation?.message ||
       errors.car?.message ||
       errors.plate?.message;
-    dispatch(handleAddError(message));
+    dispatch(handleAddError(message, "danger"));
     setTimeout(() => dispatch(handleAddError("")), 4000);
   }, [errors]);
 
