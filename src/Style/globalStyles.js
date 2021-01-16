@@ -1,12 +1,14 @@
 import styled, { css, createGlobalStyle } from "styled-components";
 import { Alert } from "react-bootstrap";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 const GlobalStyle = createGlobalStyle`
 
 body {
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
   font-family: 'Lato', sans-serif;
-  background-color:#f7f7f7
+  background-color:#f7f7f7;
+  max-width:100vw
 }
 `;
 
@@ -42,6 +44,7 @@ export const StyledForm = styled.form`
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
+  max-width: 100%;
 `;
 
 export const StyledButton = styled.button`
@@ -55,11 +58,13 @@ export const StyledButton = styled.button`
   margin-left: 1%;
   cursor: pointer;
   margin: 20px auto;
+  outline: none;
+
   :hover {
     background-color: #05668d;
   }
   ${(props) => css`
-    width: props.width;
+    width: ${props.width};
   `}
 `;
 
@@ -69,4 +74,14 @@ export const StyleAlert = styled(Alert)`
   width: 80%;
   left: 10%;
   opacity: 0.7;
+`;
+
+export const StyleVisibilityIcon = styled(VisibilityIcon)`
+  color: #ff2293;
+  width: 5.25px;
+  height: 5.25px;
+  cursor: pointer;
+  :hover {
+    color: purple;
+  }
 `;
