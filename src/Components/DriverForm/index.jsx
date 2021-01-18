@@ -11,6 +11,8 @@ import {
   StyledForm,
   StyledButton,
   StyleVisibilityIcon,
+  StyledUploadButton,
+  ImageDiv,
 } from "../../Style/globalStyles";
 import { useDispatch } from "react-redux";
 import { handleAddError } from "../../Store/modules/errorMessage/actions";
@@ -113,12 +115,16 @@ const DriverFormComponent = () => {
           ref={register}
         />
         <StyledLabel>Imagem</StyledLabel>
-        {userImage && <img src={`${userImage}`} alt="Imagem do usuário"></img>}
-        <StyledInput
-          name="image"
-          placeholder="Url imagem"
-          type="file"
-        ></StyledInput>
+        <div className="img-div">
+          <ImageDiv>
+            {userImage && (
+              <img src={`${userImage}`} alt="Imagem do usuário"></img>
+            )}
+          </ImageDiv>
+          <StyledUploadButton name="image" type="file">
+            Upload
+          </StyledUploadButton>
+        </div>
         <div>
           <StyledButton type="submit">CADASTRAR</StyledButton>
         </div>
