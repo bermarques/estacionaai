@@ -7,6 +7,7 @@ import ParkingForm from "../Pages/ParkingForm/index";
 import EndingBar from "../Components/ending-bar";
 import { useSelector } from "react-redux";
 import { StyleAlert } from "../Style/globalStyles";
+import Header from "../Components/Header";
 
 const Routes = () => {
   const { message, typeMessage } = useSelector((state) => state.errorMessage);
@@ -16,6 +17,7 @@ const Routes = () => {
     <>
       <GlobalStyle />
       {message && <StyleAlert variant={typeMessage}>{message}</StyleAlert>}
+      <Header />
       <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login">
