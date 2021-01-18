@@ -18,7 +18,6 @@ const Routes = () => {
     <>
       <GlobalStyle />
       {message && <StyleAlert variant={typeMessage}>{message}</StyleAlert>}
-      <Header />
       <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/available" component={AvailableParking} />
