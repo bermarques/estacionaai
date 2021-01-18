@@ -30,6 +30,22 @@ export const StyledInput = styled.input`
   }
 `;
 
+export const StyledSelect = styled.select`
+  width: 275px;
+  height: 45px;
+  border-radius: 28.5px;
+  border: none;
+  margin: 10px 20px;
+  outline: none;
+  padding-left: 10px;
+
+  :focus {
+    border: 1px solid #ff2e93;
+
+    border-radius: 28.5px;
+  }
+`;
+
 export const StyledLabel = styled.label`
   font-weight: bold;
   color: #484848;

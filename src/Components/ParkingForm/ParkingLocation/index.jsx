@@ -10,6 +10,7 @@ import {
   StyledInput,
   StyledForm,
   StyledButton,
+  StyledSelect,
 } from "../../../Style/globalStyles";
 
 const ParkingLocation = () => {
@@ -107,11 +108,15 @@ const ParkingLocation = () => {
           ref={register}
         />
         Estado
-        <select className="input-form" name="state" disabled={!cepData.uf}>
-          <option ref={register} value={cepData.uf}>
+        <StyledSelect
+          className="input-form"
+          name="state"
+          disabled={!cepData.uf}
+        >
+          <option ref={register} value={cepData.uf} className="input-form">
             {cepData.uf}
           </option>
-        </select>
+        </StyledSelect>
         Valor
         <StyledInput
           className="input-form"
