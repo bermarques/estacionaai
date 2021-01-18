@@ -2,7 +2,6 @@ import "../../Style/DriverForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../Helpers/DriverForm/index";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState, useEffect } from "react";
 import registerRequest from "../../requests/Register";
 import { useHistory } from "react-router-dom";
@@ -11,6 +10,7 @@ import {
   StyledInput,
   StyledForm,
   StyledButton,
+  StyleVisibilityIcon,
 } from "../../Style/globalStyles";
 import { useDispatch } from "react-redux";
 import { handleAddError } from "../../Store/modules/errorMessage/actions";
@@ -25,7 +25,7 @@ const DriverFormComponent = () => {
   const sendForm = async (event) => {
     const response = await registerRequest(event, "register");
     if (response === "Email already exists") {
-      dispatch(handleAddError("Email já cadastrado"));
+      dispatch(handleAddError("Email já cadastrado", "danger"));
     }
     setTimeout(() => dispatch(handleAddError("")), 4000);
     response.status === 201 && history.push("/login");
@@ -48,7 +48,7 @@ const DriverFormComponent = () => {
       errors.password_confirmation?.message ||
       errors.car?.message ||
       errors.plate?.message;
-    dispatch(handleAddError(message));
+    dispatch(handleAddError(message, "danger"));
     setTimeout(() => dispatch(handleAddError("")), 4000);
   }, [errors]);
 
@@ -78,7 +78,7 @@ const DriverFormComponent = () => {
             name="password"
             ref={register}
           />
-          <VisibilityIcon
+          <StyleVisibilityIcon
             className="icon-visible"
             fontSize="large"
             onClick={() => changeVisibility()}
@@ -93,7 +93,7 @@ const DriverFormComponent = () => {
             name="password_confirmation"
             ref={register}
           />
-          <VisibilityIcon
+          <StyleVisibilityIcon
             className="icon-visible"
             fontSize="large"
             onClick={() => changeVisibility()}
