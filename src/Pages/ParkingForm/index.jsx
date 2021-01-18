@@ -3,7 +3,7 @@ import ParkingLocation from "../../Components/ParkingForm/ParkingLocation/index"
 
 const ParkingForm = () => {
   return (
-    <div>
+    <div className="master-page">
       <ParkingLocation />
     </div>
   );
