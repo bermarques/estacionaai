@@ -42,7 +42,8 @@ export const StyledLabel = styled.label`
 
 export const StyledForm = styled.form`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   width: 100vw;
   max-width: 100%;
 `;

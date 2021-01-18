@@ -51,7 +51,7 @@ const ParkingLocation = () => {
   };
 
   return (
-    <div className="master">
+    <div className="master-parking-form">
       <StyledForm onSubmit={handleSubmit(sendForm)}>
         {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
         {parkingFormdata.map(({ placeholder, name, type }, index) => (

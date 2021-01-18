@@ -76,7 +76,9 @@ const LoginForm = () => {
           onClick={() => changeVisibility()}
         />
       </div>
-      <StyledButton type="submit">Entrar</StyledButton>
+      <div>
+        <StyledButton type="submit">Entrar</StyledButton>
+      </div>
     </StyledForm>
   );
 };

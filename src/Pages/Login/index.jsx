@@ -1,13 +1,18 @@
 import CarIcon from "../../Components/icon";
 import LoginTabs from "../../Components/login-tabs";
 import LoginForm from "../../Components/Login/index";
+import "../../Style/Login/style.css";
 
 const Login = () => {
   return (
-    <div>
+    <div className="master-login">
       <CarIcon />
-      <LoginTabs />
-      <LoginForm />
+      <div className="form-login">
+        <LoginTabs />
+      </div>
+      <div className="form-login">
+        <LoginForm />
+      </div>
     </div>
   );
 };
