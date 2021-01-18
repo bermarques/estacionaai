@@ -1,11 +1,12 @@
 import "../../Style/Welcome/style.css";
 import { useHistory } from "react-router-dom";
+import CarIcon from "../../Components/icon";
 
 const Welcome = () => {
   const history = useHistory();
   return (
     <div className="master-welcome">
-      <div className="logo"></div>
+      <CarIcon />
       <div className="center">
         <h1 className="title">Um novo conceito em garagens</h1>
         <button

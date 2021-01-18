@@ -157,3 +157,45 @@ export const CardAvaliation = styled.label`
   width: 100%;
   text-align: center;
 `;
+
+export const StyledTitle = styled.label`
+  font-weight: bold;
+  color: #ff2e93;
+  font-size: 20px;
+  line-height: 27px;
+  width: 100%;
+  text-align: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+`;
+
+export const StyledUploadButton = styled.label`
+  margin-top: 20px;
+  background-color: #152764;
+  color: white;
+  height: 45px;
+  border: none;
+  border-radius: 28.5px;
+  width: 100px;
+  cursor: pointer;
+  margin-left: 2%;
+  outline: none;
+  text-align: center;
+  font-size: 20px;
+  :hover {
+    background-color: #05668d;
+  }
+
+  input {
+    display: none;
+    height: 100%;
+    width: 100%;
+  }
+`;
+
+export const ImageDiv = styled.div`
+  width: 190px;
+  height: 100px;
+  border-radius: 28px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+`;
