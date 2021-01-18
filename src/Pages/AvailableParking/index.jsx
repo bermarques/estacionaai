@@ -1,7 +1,11 @@
+import AvailableParkingComponents from "../../Components/AvailableParking/index";
+
 const AvailableParking = () => {
   return (
     <div>
-      <div>Available</div>
+      <div>
+        <AvailableParkingComponents />
+      </div>
     </div>
   );
 };
