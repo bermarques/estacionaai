@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema, parkingFormdata } from "../../../Helpers/ParkingForm/index";
 import uploadImage from "../../../requests/uploadImages";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { handleAddError } from "../../../Store/modules/errorMessage/actions";
 import {
   StyledLabel,
   StyledInput,
@@ -50,6 +52,21 @@ const ParkingLocation = () => {
       console.log(data);
     });
   };
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const message =
+      errors.image?.message ||
+      errors.street?.message ||
+      errors.number?.message ||
+      errors.neighborhood?.message ||
+      errors.city?.message ||
+      errors.cep?.message ||
+      errors.price?.message ||
+      errors.days?.message;
+    dispatch(handleAddError(message, "danger"));
+    setTimeout(() => dispatch(handleAddError("")), 4000);
+  }, [errors]);
 
   return (
     <div className="master-parking-form">
@@ -197,16 +214,6 @@ const ParkingLocation = () => {
           <StyledLabel for="monthly" value="monthly">
             Mensal
           </StyledLabel>
-        </div>
-        <div className="errors">
-          {errors.image?.message ||
-            errors.street?.message ||
-            errors.number?.message ||
-            errors.neighborhood?.message ||
-            errors.city?.message ||
-            errors.cep?.message ||
-            errors.price?.message ||
-            errors.days?.message}
         </div>
         <StyledButton className="button-send" type="submit">
           Enviar

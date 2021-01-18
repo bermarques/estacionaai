@@ -11,11 +11,14 @@ import {
   StyledForm,
   StyledButton,
   StyleVisibilityIcon,
+  StyledUploadButton,
+  ImageDiv,
 } from "../../Style/globalStyles";
 import { useDispatch } from "react-redux";
 import { handleAddError } from "../../Store/modules/errorMessage/actions";
 
 const DriverFormComponent = () => {
+  const [userImage, setUserImage] = useState();
   const [visible, setVisible] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
@@ -70,7 +73,6 @@ const DriverFormComponent = () => {
           ref={register}
         />
         <StyledLabel>Senha</StyledLabel>
-
         <div>
           <StyledInput
             type={visible ? "text" : "password"}
@@ -85,7 +87,6 @@ const DriverFormComponent = () => {
           />
         </div>
         <StyledLabel>Confirmar Senha</StyledLabel>
-
         <div>
           <StyledInput
             placeholder="Confirmação Senha"
@@ -99,7 +100,6 @@ const DriverFormComponent = () => {
             onClick={() => changeVisibility()}
           />
         </div>
-
         <StyledLabel>Veículo</StyledLabel>
         <StyledInput
           type="text"
@@ -114,6 +114,17 @@ const DriverFormComponent = () => {
           name="plate"
           ref={register}
         />
+        <StyledLabel>Imagem</StyledLabel>
+        <div className="img-div">
+          <ImageDiv>
+            {userImage && (
+              <img src={`${userImage}`} alt="Imagem do usuário"></img>
+            )}
+          </ImageDiv>
+          <StyledUploadButton name="image" type="file">
+            Upload
+          </StyledUploadButton>
+        </div>
         <div>
           <StyledButton type="submit">CADASTRAR</StyledButton>
         </div>

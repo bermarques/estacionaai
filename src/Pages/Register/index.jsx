@@ -1,6 +1,5 @@
 import CarIcon from "../../Components/icon";
 import LoginTabs from "../../Components/login-tabs";
-
 import "../../Style/DriverForm/style.css";
 import DriverFormComponent from "../../Components/DriverForm/index";
 
