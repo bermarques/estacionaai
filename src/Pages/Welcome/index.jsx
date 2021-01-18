@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const Welcome = () => {
   const history = useHistory();
   return (
-    <div className="master">
+    <div className="master-welcome">
       <div className="logo"></div>
       <div className="center">
         <h1 className="title">Um novo conceito em garagens</h1>
