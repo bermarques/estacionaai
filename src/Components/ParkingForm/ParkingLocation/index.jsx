@@ -1,21 +1,26 @@
 import "../../../Style/ParkingForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  schema,
-  parkingFormdata,
-  States,
-} from "../../../Helpers/ParkingForm/index";
+import { schema, parkingFormdata } from "../../../Helpers/ParkingForm/index";
 import uploadImage from "../../../requests/uploadImages";
 import { useState } from "react";
+import axios from "axios";
 import {
   StyledLabel,
   StyledInput,
   StyledForm,
   StyledButton,
+  StyledSelect,
 } from "../../../Style/globalStyles";
 
 const ParkingLocation = () => {
+  const [cepData, setCepData] = useState({
+    logradouro: "",
+    bairro: "",
+    uf: "",
+    cidade: "",
+  });
+
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
@@ -28,8 +33,26 @@ const ParkingLocation = () => {
     setParkImage(await uploadImage(e));
   };
 
+  const onBlurCep = (event) => {
+    const { value } = event.target;
+    const cep = value?.replace(/[^0-9]/g, "");
+    if (cep?.length !== 8) {
+      return;
+    }
+
+    axios.get(`https://viacep.com.br/ws/${cep}/json/`).then((data) => {
+      setCepData({
+        logradouro: data.data.logradouro,
+        bairro: data.data.bairro,
+        uf: data.data.uf,
+        cidade: data.data.localidade,
+      });
+      console.log(data);
+    });
+  };
+
   return (
-    <div className="master">
+    <div className="master-parking-form">
       <StyledForm onSubmit={handleSubmit(sendForm)}>
         {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
         {parkingFormdata.map(({ placeholder, name, type }, index) => (
@@ -45,14 +68,55 @@ const ParkingLocation = () => {
             />
           </div>
         ))}
+        <div>
+          <div>CEP</div>
+          <StyledInput className="input-form" onBlur={onBlurCep} />
+        </div>
+        Rua
+        <StyledInput
+          className="input-form"
+          name="street"
+          type="text"
+          value={cepData.logradouro}
+          disabled={!cepData.logradouro}
+          ref={register}
+        />
+        Número
+        <StyledInput
+          className="input-form"
+          name="number"
+          type="text"
+          disabled={!cepData.logradouro}
+          ref={register}
+        />
+        Bairro
+        <StyledInput
+          className="input-form"
+          name="neighborhood"
+          type="text"
+          value={cepData.bairro}
+          disabled={!cepData.bairro}
+          ref={register}
+        />
+        Cidade
+        <StyledInput
+          className="input-form"
+          name="city"
+          type="text"
+          value={cepData.cidade}
+          disabled={!cepData.cidade}
+          ref={register}
+        />
         Estado
-        <select className="input-form" name="state">
-          {States.map(({ value, name }, index) => (
-            <option key={index} ref={register} value={value}>
-              {name}
-            </option>
-          ))}
-        </select>
+        <StyledSelect
+          className="input-form"
+          name="state"
+          disabled={!cepData.uf}
+        >
+          <option ref={register} value={cepData.uf} className="input-form">
+            {cepData.uf}
+          </option>
+        </StyledSelect>
         Valor
         <StyledInput
           className="input-form"

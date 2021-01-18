@@ -114,7 +114,9 @@ const DriverFormComponent = () => {
           name="plate"
           ref={register}
         />
-        <StyledButton type="submit">CADASTRAR</StyledButton>
+        <div>
+          <StyledButton type="submit">CADASTRAR</StyledButton>
+        </div>
       </StyledForm>
     </div>
   );

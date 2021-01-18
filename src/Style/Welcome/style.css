@@ -2,11 +2,12 @@
   background-image: url("../IMG/welcome.png");
   width: 49.938rem;
   height: 33.375rem;
-  margin-left: 0%;
+  margin-left: 30%;
 }
 
-.master {
+.master-welcome {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   font-family: Lato;
   font-style: normal;
@@ -15,6 +16,8 @@
   line-height: 1.688rem;
   color: #484848;
   background-color: #e5e5e5;
+  width: 100vw;
+  max-width: 100%;
 }
 
 .welcome-button {
@@ -25,7 +28,7 @@
   font-size: 1.125rem;
   border-radius: 0.563rem;
   margin-top: 1rem;
-  margin-left: 10%;
+  margin-left: 44%;
   cursor: pointer;
 }
 
@@ -49,6 +52,7 @@
   margin-top: 2%;
   margin-bottom: 2%;
   border-radius: 0.75rem;
+  margin-left: 48%;
 }
 
 .center {
