@@ -1,14 +1,10 @@
-.master-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .master {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 35%;
+  width: 15%;
 }
 
 .input-form {
