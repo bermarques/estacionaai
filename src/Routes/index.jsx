@@ -4,15 +4,22 @@ import Welcome from "../Pages/Welcome/index";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import ParkingForm from "../Pages/ParkingForm/index";
+import AvailableParking from "../Pages/AvailableParking/index";
 import EndingBar from "../Components/ending-bar";
-import ParkingForm from "../Pages/ParkingForm"
+import { useSelector } from "react-redux";
+import { StyleAlert } from "../Style/globalStyles";
 
 const Routes = () => {
+  const { message, typeMessage } = useSelector((state) => state.errorMessage);
+  console.log(typeMessage);
+
   return (
     <>
       <GlobalStyle />
+      {message && <StyleAlert variant={typeMessage}>{message}</StyleAlert>}
       <Switch>
         <Route exact path="/" component={Welcome} />
+        <Route exact path="/available" component={AvailableParking} />
         <Route exact path="/login">
           <Login />
         </Route>

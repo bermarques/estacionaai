@@ -1,46 +1,10 @@
-.render {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 0%;
-}
-
-.master {
-  position: absolute;
-  left: 11.94%;
-  right: 11.94%;
-  top: 35.85%;
-  bottom: 59.89;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 27px;
-  color: #484848;
-}
-
-.master-form {
+.master-parking-form {
   display: flex;
   flex-direction: column;
-  margin-top: -20%;
-  margin-left: 40%;
+  align-items: center;
   justify-content: center;
-  text-align: left;
-}
-
-.button-send {
-  margin-top: 20px;
-  background-color: #152764;
-  color: white;
-  height: 45px;
-  border-radius: 28.5px;
-  width: 250px;
-  margin-left: 1%;
-  cursor: pointer;
-}
-
-.button-send:hover {
-  background-color: #05668d;
+  margin-left: 42.5%;
+  width: 15%;
 }
 
 .input-form {
@@ -49,13 +13,6 @@
   border-radius: 28.5px;
   background-color: #ffff;
   box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
-}
-
-.icon-visible {
-  color: #ff2293;
-  width: 5.25px;
-  height: 5.25px;
-  cursor: pointer;
 }
 
 .errors {
@@ -68,15 +25,12 @@
 }
 
 .check-form {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: center;
   font-family: Lato;
   font-style: normal;
   font-weight: bold;
   line-height: 27px;
-  font-size: 15px;
-}
-
-.check-input {
-  width: 25px;
-  height: 25px;
-  border-radius: 70%;
+  font-size: 25px !important;
 }

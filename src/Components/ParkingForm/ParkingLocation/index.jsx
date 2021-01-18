@@ -1,15 +1,26 @@
 import "../../../Style/ParkingForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  schema,
-  parkingFormdata,
-  States,
-} from "../../../Helpers/ParkingForm/index";
+import { schema, parkingFormdata } from "../../../Helpers/ParkingForm/index";
 import uploadImage from "../../../requests/uploadImages";
 import { useState } from "react";
+import axios from "axios";
+import {
+  StyledLabel,
+  StyledInput,
+  StyledForm,
+  StyledButton,
+  StyledSelect,
+} from "../../../Style/globalStyles";
 
 const ParkingLocation = () => {
+  const [cepData, setCepData] = useState({
+    logradouro: "",
+    bairro: "",
+    uf: "",
+    cidade: "",
+  });
+
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
@@ -22,14 +33,32 @@ const ParkingLocation = () => {
     setParkImage(await uploadImage(e));
   };
 
+  const onBlurCep = (event) => {
+    const { value } = event.target;
+    const cep = value?.replace(/[^0-9]/g, "");
+    if (cep?.length !== 8) {
+      return;
+    }
+
+    axios.get(`https://viacep.com.br/ws/${cep}/json/`).then((data) => {
+      setCepData({
+        logradouro: data.data.logradouro,
+        bairro: data.data.bairro,
+        uf: data.data.uf,
+        cidade: data.data.localidade,
+      });
+      console.log(data);
+    });
+  };
+
   return (
-    <div className="master">
-      <form className="master-form" onSubmit={handleSubmit(sendForm)}>
+    <div className="master-parking-form">
+      <StyledForm onSubmit={handleSubmit(sendForm)}>
         {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
         {parkingFormdata.map(({ placeholder, name, type }, index) => (
           <div>
             <div>{placeholder}</div>
-            <input
+            <StyledInput
               className="input-form"
               key={index}
               name={name}
@@ -39,16 +68,57 @@ const ParkingLocation = () => {
             />
           </div>
         ))}
+        <div>
+          <div>CEP</div>
+          <StyledInput className="input-form" onBlur={onBlurCep} />
+        </div>
+        Rua
+        <StyledInput
+          className="input-form"
+          name="street"
+          type="text"
+          value={cepData.logradouro}
+          disabled={!cepData.logradouro}
+          ref={register}
+        />
+        Número
+        <StyledInput
+          className="input-form"
+          name="number"
+          type="text"
+          disabled={!cepData.logradouro}
+          ref={register}
+        />
+        Bairro
+        <StyledInput
+          className="input-form"
+          name="neighborhood"
+          type="text"
+          value={cepData.bairro}
+          disabled={!cepData.bairro}
+          ref={register}
+        />
+        Cidade
+        <StyledInput
+          className="input-form"
+          name="city"
+          type="text"
+          value={cepData.cidade}
+          disabled={!cepData.cidade}
+          ref={register}
+        />
         Estado
-        <select className="input-form" name="state">
-          {States.map(({ value, name }, index) => (
-            <option key={index} ref={register} value={value}>
-              {name}
-            </option>
-          ))}
-        </select>
+        <StyledSelect
+          className="input-form"
+          name="state"
+          disabled={!cepData.uf}
+        >
+          <option ref={register} value={cepData.uf} className="input-form">
+            {cepData.uf}
+          </option>
+        </StyledSelect>
         Valor
-        <input
+        <StyledInput
           className="input-form"
           type="number"
           placeholder="Valor"
@@ -57,76 +127,76 @@ const ParkingLocation = () => {
         />
         Veículos Aceitos
         <div className="check-form">
-          <input
+          <StyledInput
             className="check-input"
             name="car"
             type="checkbox"
             ref={register}
             value="monthly"
           />
-          <label for="car" value="car">
+          <StyledLabel for="car" value="car">
             Carro
-          </label>
+          </StyledLabel>
         </div>
         <div className="check-form">
-          <input
+          <StyledInput
             className="check-input"
             name="motorcycle"
             type="checkbox"
             ref={register}
             value="motorcycle"
           />
-          <label for="motorcycle" value="motorcycle">
+          <StyledLabel for="motorcycle" value="motorcycle">
             Moto
-          </label>
+          </StyledLabel>
         </div>
         <div className="check-form">
-          <input
+          <StyledInput
             className="check-input"
             name="truck"
             type="checkbox"
             ref={register}
             value="truck"
           />
-          <label for="truck" value="truck">
+          <StyledLabel for="truck" value="truck">
             Caminhonete
-          </label>
+          </StyledLabel>
         </div>
         Tipo de locação
         <div className="check-form">
-          <input
+          <StyledInput
             className="check-input"
             name="daily"
             type="checkbox"
             ref={register}
           />
-          <label for="daily" value="daily">
+          <StyledLabel for="daily" value="daily">
             Diária
-          </label>
+          </StyledLabel>
         </div>
         <div className="check-form">
-          <input
+          <StyledInput
             className="check-input"
             name="weekly"
             type="checkbox"
             ref={register}
             value="weekly"
           />
-          <label for="weekly" value="weekly">
+          <StyledLabel for="weekly" value="weekly">
             Semanal
-          </label>
+          </StyledLabel>
         </div>
         <div className="check-form">
-          <input
+          <StyledInput
             className="check-input"
             name="monthly"
             type="checkbox"
             ref={register}
             value="monthly"
           />
-          <label for="monthly" value="monthly">
+          <StyledLabel for="monthly" value="monthly">
             Mensal
-          </label>
+          </StyledLabel>
         </div>
         <div className="errors">
           {errors.image?.message ||
@@ -138,10 +208,10 @@ const ParkingLocation = () => {
             errors.price?.message ||
             errors.days?.message}
         </div>
-        <button className="button-send" type="submit">
+        <StyledButton className="button-send" type="submit">
           Enviar
-        </button>
-      </form>
+        </StyledButton>
+      </StyledForm>
     </div>
   );
 };

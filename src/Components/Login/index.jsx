@@ -2,9 +2,15 @@ import "../../Style/Login/style.css";
 import { schema } from "../../Helpers/Login/index";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useState } from "react";
-import axios from "axios";
+import requestUser from "../../requests/Register";
+import {
+  StyledInput,
+  StyledLabel,
+  StyledButton,
+  StyledForm,
+  StyleVisibilityIcon,
+} from "../../Style/globalStyles";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
@@ -14,18 +20,13 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const sendForm = (event) => {
+  const sendForm = async (event) => {
     event.preventDefault();
-
-    axios
-      .post("https://server-estaciona-ai.herokuapp.com/login", loginData)
-      .then((res) => {
-        console.log(loginData);
-        if (res.status === 200) {
-          localStorage.setItem("token", res.data.accessToken);
-        }
-      })
-      .catch((error) => error.response.data);
+    const res = await requestUser(loginData, "login");
+    if (res.status === 200) {
+      localStorage.setItem("token", res.data.accessToken);
+    }
+    console.log(res);
   };
 
   const changeVisibility = () => {
@@ -45,65 +46,40 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="master">
-      <form
-        className="master-form"
-        onSubmit={(evt) => {
-          evt.preventDefault();
-          handleSubmit(sendForm(evt));
-        }}
-      >
-        E-mail
-        <input
-          className="input-form"
-          type="email"
-          placeholder="E-mail"
-          name="email"
+    <StyledForm
+      onSubmit={(evt) => {
+        evt.preventDefault();
+        handleSubmit(sendForm(evt));
+      }}
+    >
+      <StyledLabel>E-mail</StyledLabel>
+      <StyledInput
+        type="email"
+        placeholder="E-mail"
+        name="email"
+        ref={register}
+        onChange={handleEmail}
+        value={loginData.email}
+      />
+      <StyledLabel>Senha</StyledLabel>
+      <div>
+        <StyledInput
+          type={visible ? "text" : "password"}
+          placeholder="Senha"
+          name="password"
           ref={register}
-          onChange={handleEmail}
-          value={loginData.email}
+          onChange={handlePassword}
+          value={loginData.password}
         />
-        Senha
-        {visible ? (
-          <div>
-            <input
-              className="input-form"
-              type="text"
-              placeholder="Senha"
-              name="password"
-              ref={register}
-              onChange={handlePassword}
-              value={loginData.password}
-            />
-            <VisibilityIcon
-              className="icon-visible"
-              fontSize="large"
-              onClick={() => changeVisibility()}
-            />
-          </div>
-        ) : (
-          <div>
-            <input
-              className="input-form"
-              type="password"
-              placeholder="Senha"
-              name="password"
-              onChange={handlePassword}
-              value={loginData.password}
-              ref={register}
-            />
-            <VisibilityIcon
-              className="icon-visible"
-              fontSize="large"
-              onClick={() => changeVisibility()}
-            />
-          </div>
-        )}
-        <button className="button-send" type="submit">
-          Entrar
-        </button>
-      </form>
-    </div>
+        <StyleVisibilityIcon
+          fontSize="large"
+          onClick={() => changeVisibility()}
+        />
+      </div>
+      <div>
+        <StyledButton type="submit">Entrar</StyledButton>
+      </div>
+    </StyledForm>
   );
 };
 
