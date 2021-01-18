@@ -1,6 +1,6 @@
-import { Container } from "./style";
+import { Container, Icon } from "./style";
 
-const CarIcon = () => {
+export const CarIcon = () => {
   return (
     <Container>
       <div className="text-center">
@@ -10,4 +10,13 @@ const CarIcon = () => {
   );
 };
 
-export default CarIcon;
+export const BackIcon = ({ size, className }) => {
+  return (
+    <Icon
+      className={className}
+      src="/assets/back.svg"
+      size={size}
+      alt="voltar"
+    />
+  );
+};

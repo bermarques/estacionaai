@@ -1,6 +1,7 @@
 import styled, { css, createGlobalStyle } from "styled-components";
 import { Alert } from "react-bootstrap";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import StarIcon from "@material-ui/icons/Star";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -101,4 +102,58 @@ export const StyleVisibilityIcon = styled(VisibilityIcon)`
   :hover {
     color: purple;
   }
+`;
+
+export const ParkingCard = styled.div`
+  overflow: hidden;
+  padding: 0 0 32px;
+  margin: 48px auto 0;
+  height: 250px;
+  width: 200px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+`;
+
+export const MasterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+`;
+
+export const CardLabel = styled.label`
+  font-weight: bold;
+  color: #484848;
+  font-size: 15px;
+  line-height: 27px;
+  width: 100%;
+  text-align: center;
+`;
+
+export const CardDescription = styled.label`
+  font-weight: bold;
+  color: #484848;
+  font-size: 20px;
+  line-height: 27px;
+  width: 100%;
+  text-align: center;
+`;
+
+export const StyleStar = styled(StarIcon)`
+  color: #01e6b4;
+  width: 5.25px;
+  height: 5.25px;
+  cursor: pointer;
+  :hover {
+    color: purple;
+  }
+`;
+
+export const CardAvaliation = styled.label`
+  font-weight: bold;
+  color: #01e6b4;
+  font-size: 20px;
+  line-height: 27px;
+  width: 100%;
+  text-align: center;
 `;

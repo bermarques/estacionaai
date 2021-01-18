@@ -1,4 +1,4 @@
-import CarIcon from "../../Components/icon";
+import { CarIcon } from "../../Components/icon/index";
 import LoginTabs from "../../Components/login-tabs";
 
 import "../../Style/DriverForm/style.css";
