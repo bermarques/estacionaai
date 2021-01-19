@@ -117,25 +117,31 @@ const ParkingLocation = () => {
           disabled={!cepData.bairro}
           ref={register}
         />
-        Cidade
-        <StyledInput
-          className="input-form"
-          name="city"
-          type="text"
-          value={cepData.cidade}
-          disabled={!cepData.cidade}
-          ref={register}
-        />
-        Estado
-        <StyledSelect
-          className="input-form"
-          name="state"
-          disabled={!cepData.uf}
-        >
-          <option ref={register} value={cepData.uf} className="input-form">
-            {cepData.uf}
-          </option>
-        </StyledSelect>
+        <div className="img-div-park">
+          <div>
+            Cidade
+            <StyledInput
+              className="input-form-city"
+              name="city"
+              type="text"
+              value={cepData.cidade}
+              disabled={!cepData.cidade}
+              ref={register}
+            />
+          </div>
+          <div>
+            Estado
+            <StyledSelect
+              className="input-form-state"
+              name="state"
+              disabled={!cepData.uf}
+            >
+              <option ref={register} value={cepData.uf} className="input-form">
+                {cepData.uf}
+              </option>
+            </StyledSelect>
+          </div>
+        </div>
         Valor
         <StyledInput
           className="input-form"
