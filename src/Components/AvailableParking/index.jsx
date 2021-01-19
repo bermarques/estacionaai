@@ -6,6 +6,7 @@ import {
   StyleStar,
   CardAvaliation,
 } from "../../Style/globalStyles";
+import ParkingLotBooking from "../ParkingLotBooking";
 
 const AvailableParkingComponents = () => {
   return (
@@ -17,6 +18,7 @@ const AvailableParkingComponents = () => {
       <CardAvaliation>
         5<StyleStar />
       </CardAvaliation>
+      <ParkingLotBooking />
     </MasterDiv>
   );
 };
