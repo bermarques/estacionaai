@@ -196,6 +196,13 @@ export const StyledUploadButton = styled.label`
 export const ImageDiv = styled.div`
   width: 190px;
   height: 100px;
+  max-width: 190px;
+  max-height: 100px;
   border-radius: 28px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
