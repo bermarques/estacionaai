@@ -228,11 +228,11 @@ const ParkingLocation = () => {
           <ImageDiv>
             {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
           </ImageDiv>
-          <StyledUploadButton name="image" type="file">
-            Upload
+          <StyledUploadButton>
+            Upload <input name="image" type="file" />
           </StyledUploadButton>
         </div>
-        <StyledButton className="button-send" type="submit">
+        <StyledButton className="button-send-parking" type="submit">
           Enviar
         </StyledButton>
       </StyledForm>

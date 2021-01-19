@@ -10,7 +10,7 @@
   .logo-parking {
     margin-left: 25% !important;
   }
-  .button-send {
+  .button-send-parking {
     margin-left: 10% !important;
   }
 }
@@ -20,7 +20,8 @@
   align-items: center;
   justify-content: center;
   margin-left: 42.5%;
-  width: 100%;
+
+  width: 300px;
 }
 
 .input-form {
@@ -47,15 +48,6 @@
   box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
 }
 
-.errors {
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 27px;
-  color: red;
-}
-
 .check-form {
   display: flex;
   flex-direction: row-reverse;
@@ -79,4 +71,8 @@
   width: 180px;
   height: 70px;
   margin-left: 46%;
+}
+
+.button-send-parking {
+  margin-left: 2% !important;
 }

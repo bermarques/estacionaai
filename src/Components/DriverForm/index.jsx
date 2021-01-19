@@ -127,7 +127,7 @@ const DriverFormComponent = () => {
         </div>
         <div>
           <StyledButton type="submit" className="send-driver">
-            CADASTRAR
+            CADASTRAR <input name="image" type="file" className="input-img" />
           </StyledButton>
         </div>
       </StyledForm>
