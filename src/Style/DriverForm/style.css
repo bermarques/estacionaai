@@ -1,3 +1,17 @@
+@media only screen and (max-width: 360px) {
+  .master-driver {
+    width: 100%;
+    margin: 10px auto;
+  }
+  .driver-form {
+    width: 100%;
+    margin-left: 1% !important;
+  }
+  .send-driver {
+    margin-left: 15% !important;
+  }
+}
+
 .master-driver {
   display: flex;
   flex-direction: column;

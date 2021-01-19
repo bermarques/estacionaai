@@ -126,7 +126,9 @@ const DriverFormComponent = () => {
           </StyledUploadButton>
         </div>
         <div>
-          <StyledButton type="submit">CADASTRAR</StyledButton>
+          <StyledButton type="submit" className="send-driver">
+            CADASTRAR
+          </StyledButton>
         </div>
       </StyledForm>
     </div>

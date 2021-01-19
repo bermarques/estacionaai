@@ -1,3 +1,13 @@
+@media only screen and (max-width: 360px) {
+  .master-parking-form {
+    width: 100%;
+    margin: 10px auto;
+  }
+  .style-form-park {
+    width: 100%;
+    margin-left: 2% !important;
+  }
+}
 .master-parking-form {
   display: flex;
   flex-direction: column;
