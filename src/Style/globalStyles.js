@@ -187,7 +187,7 @@ export const StyledUploadButton = styled.label`
   }
 
   input {
-    display: none;
+    opacity: 0;
     height: 100%;
     width: 100%;
   }
