@@ -7,6 +7,7 @@ const ParkingForm = () => {
     <div>
       <StyledTitle>Cadastro de Vaga</StyledTitle>
       <ParkingLocation />
+      <div className="logo-parking"></div>
     </div>
   );
 };

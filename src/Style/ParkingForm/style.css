@@ -57,3 +57,10 @@
   margin-top: 2%;
   width: 100%;
 }
+
+.logo-parking {
+  background-image: url("../IMG/parking-img.png");
+  width: 180px;
+  height: 70px;
+  margin-left: 46%;
+}

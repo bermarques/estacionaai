@@ -11,7 +11,7 @@ const Welcome = () => {
         <h1 className="title">Um novo conceito em garagens</h1>
         <button
           className="welcome-button"
-          onClick={() => history.push("/parkings")}
+          onClick={() => history.push("/available")}
         >
           Expore garagens perto de você!
         </button>
