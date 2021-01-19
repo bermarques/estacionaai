@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import requestUser from "../../requests/Register";
+import jwt_decode from "jwt-decode";
+import { addUserThunk } from "../../Store/modules/user/thunk";
+import {useDispatch} from "react-redux";
 import {
   StyledInput,
   StyledLabel,
@@ -19,14 +22,19 @@ const LoginForm = () => {
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-
+  const dispatch = useDispatch()
   const sendForm = async (event) => {
     event.preventDefault();
     const res = await requestUser(loginData, "login");
     if (res.status === 200) {
-      localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem("token", res.data.accessToken)
+      let decoded = jwt_decode(res.data.accessToken)
+      dispatch(addUserThunk(res.data.accessToken, decoded.sub))
+      // dispatch(handleToken("Email já cadastrado", "danger"));
+      console.log(decoded);
     }
     console.log(res);
+
   };
 
   const changeVisibility = () => {
