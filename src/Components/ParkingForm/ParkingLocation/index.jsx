@@ -216,17 +216,15 @@ const ParkingLocation = () => {
           <StyledLabel for="monthly" value="monthly">
             Mensal
           </StyledLabel>
-          <div className="img-div-park">
-            <ImageDiv>
-              {" "}
-              {parkImage && (
-                <img src={`${parkImage}`} alt="imagem da vaga"></img>
-              )}
-            </ImageDiv>
-            <StyledUploadButton name="image" type="file">
-              Upload
-            </StyledUploadButton>
-          </div>
+        </div>
+        <StyledLabel>Foto da Garagem</StyledLabel>{" "}
+        <div className="img-div-park">
+          <ImageDiv>
+            {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
+          </ImageDiv>
+          <StyledUploadButton name="image" type="file">
+            Upload
+          </StyledUploadButton>
         </div>
         <StyledButton className="button-send" type="submit">
           Enviar
