@@ -34,3 +34,10 @@
   line-height: 27px;
   font-size: 25px !important;
 }
+
+.img-div-park {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+  width: 100%;
+}

@@ -13,6 +13,8 @@ import {
   StyledForm,
   StyledButton,
   StyledSelect,
+  StyledUploadButton,
+  ImageDiv,
 } from "../../../Style/globalStyles";
 
 const ParkingLocation = () => {
@@ -30,6 +32,7 @@ const ParkingLocation = () => {
     delete event.password_confirmation;
     console.log(event);
   };
+
   const [parkImage, setParkImage] = useState();
   const changeImage = async (e) => {
     setParkImage(await uploadImage(e));
@@ -71,7 +74,6 @@ const ParkingLocation = () => {
   return (
     <div className="master-parking-form">
       <StyledForm onSubmit={handleSubmit(sendForm)}>
-        {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
         {parkingFormdata.map(({ placeholder, name, type }, index) => (
           <div>
             <div>{placeholder}</div>
@@ -214,6 +216,17 @@ const ParkingLocation = () => {
           <StyledLabel for="monthly" value="monthly">
             Mensal
           </StyledLabel>
+          <div className="img-div-park">
+            <ImageDiv>
+              {" "}
+              {parkImage && (
+                <img src={`${parkImage}`} alt="imagem da vaga"></img>
+              )}
+            </ImageDiv>
+            <StyledUploadButton name="image" type="file">
+              Upload
+            </StyledUploadButton>
+          </div>
         </div>
         <StyledButton className="button-send" type="submit">
           Enviar
