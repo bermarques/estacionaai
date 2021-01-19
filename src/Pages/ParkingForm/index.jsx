@@ -5,7 +5,6 @@ import { StyledTitle } from "../../Style/globalStyles";
 const ParkingForm = () => {
   return (
     <div>
-      <StyledTitle>Cadastro de Vaga</StyledTitle>
       <ParkingLocation />
     </div>
   );

@@ -6,7 +6,7 @@ import { useState } from "react";
 import requestUser from "../../requests/Register";
 import jwt_decode from "jwt-decode";
 import { addUserThunk } from "../../Store/modules/user/thunk";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   StyledInput,
   StyledLabel,
@@ -14,6 +14,8 @@ import {
   StyledForm,
   StyleVisibilityIcon,
 } from "../../Style/globalStyles";
+import { useCookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
@@ -22,19 +24,21 @@ const LoginForm = () => {
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+  const [cookies, setCookie] = useCookies();
   const sendForm = async (event) => {
     event.preventDefault();
     const res = await requestUser(loginData, "login");
     if (res.status === 200) {
-      localStorage.setItem("token", res.data.accessToken)
-      let decoded = jwt_decode(res.data.accessToken)
-      dispatch(addUserThunk(res.data.accessToken, decoded.sub))
-      // dispatch(handleToken("Email já cadastrado", "danger"));
-      console.log(decoded);
+      setCookie("token", res.data.accessToken);
+      let decoded = jwt_decode(res.data.accessToken);
+      setCookie("ID", decoded.sub);
+      dispatch(addUserThunk(res.data.accessToken, decoded.sub));
+      history.push("/vagas");
     }
     console.log(res);
-
   };
 
   const changeVisibility = () => {
