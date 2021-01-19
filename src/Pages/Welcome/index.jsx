@@ -1,6 +1,6 @@
 import "../../Style/Welcome/style.css";
 import { useHistory } from "react-router-dom";
-import CarIcon from "../../Components/icon";
+import { CarIcon } from "../../Components/icon/index";
 
 const Welcome = () => {
   const history = useHistory();

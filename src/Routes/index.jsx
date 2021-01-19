@@ -8,6 +8,7 @@ import AvailableParking from "../Pages/AvailableParking/index";
 import EndingBar from "../Components/ending-bar";
 import { useSelector } from "react-redux";
 import { StyleAlert } from "../Style/globalStyles";
+import Header from "../Components/Header";
 
 const Routes = () => {
   const { message, typeMessage } = useSelector((state) => state.errorMessage);
