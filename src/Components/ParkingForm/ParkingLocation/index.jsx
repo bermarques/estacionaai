@@ -73,7 +73,7 @@ const ParkingLocation = () => {
 
   return (
     <div className="master-parking-form">
-      <StyledForm onSubmit={handleSubmit(sendForm)}>
+      <StyledForm onSubmit={handleSubmit(sendForm)} className="style-form-park">
         {parkingFormdata.map(({ placeholder, name, type }, index) => (
           <div>
             <div>{placeholder}</div>
