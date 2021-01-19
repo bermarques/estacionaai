@@ -89,7 +89,9 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <StyledButton type="submit">Entrar</StyledButton>
+        <StyledButton type="submit" className="send-button-login">
+          Entrar
+        </StyledButton>
       </div>
     </StyledForm>
   );
