@@ -31,11 +31,6 @@ export const schema = yup.object().shape({
 
 export const parkingFormdata = [
   {
-    placeholder: "Url imagem",
-    name: "image",
-    type: "file",
-  },
-  {
     placeholder: "Preço",
     name: "price",
     type: "number",
