@@ -5,9 +5,18 @@ import { useState } from "react";
 
 const ParkingLotBooking = () => {
   const [show, setShow] = useState(false);
+  const [bookingDays, setBookingDays] = useState({ firstDay: "", lastDay: "" });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleFirstDay = (evt) => {
+    setBookingDays({ ...bookingDays, firstDay: evt.target.value });
+  };
+
+  const handleLastDay = (evt) => {
+    setBookingDays({ ...bookingDays, lastDay: evt.target.value });
+  };
 
   return (
     <>
@@ -24,15 +33,20 @@ const ParkingLotBooking = () => {
         <Modal.Header closeButton>
           <Modal.Title>Reservar vaga</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <input type="date" /> até <input type="date" />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Fechar
-          </Button>
-          <Button variant="primary">Reservar</Button>
-        </Modal.Footer>
+        <div>
+          <form>
+            <Modal.Body>
+              <input type="date" required onChange={handleFirstDay} /> até
+              <input type="date" required onChange={handleLastDay} />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Fechar
+              </Button>
+              <Button variant="primary">Reservar</Button>
+            </Modal.Footer>
+          </form>
+        </div>
       </Modal>
     </>
   );
