@@ -14,6 +14,8 @@ import {
   StyledForm,
   StyleVisibilityIcon,
 } from "../../Style/globalStyles";
+import { useCookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
@@ -23,15 +25,18 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
   const dispatch = useDispatch();
+
+  const history = useHistory();
+  const [cookies, setCookie] = useCookies();
   const sendForm = async (event) => {
     event.preventDefault();
     const res = await requestUser(loginData, "login");
     if (res.status === 200) {
-      localStorage.setItem("token", res.data.accessToken);
+      setCookie("token", res.data.accessToken);
       let decoded = jwt_decode(res.data.accessToken);
+      setCookie("ID", decoded.sub);
       dispatch(addUserThunk(res.data.accessToken, decoded.sub));
-      // dispatch(handleToken("Email já cadastrado", "danger"));
-      console.log(decoded);
+      history.push("/vagas");
     }
     console.log(res);
   };
