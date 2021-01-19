@@ -16,6 +16,8 @@ import {
   StyledUploadButton,
   ImageDiv,
 } from "../../../Style/globalStyles";
+import { requestAddress } from "../../../requests/requestAdress";
+import { useHistory } from "react-router-dom";
 
 const ParkingLocation = () => {
   const [cepData, setCepData] = useState({
@@ -28,9 +30,11 @@ const ParkingLocation = () => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const history = useHistory;
   const sendForm = (event) => {
-    delete event.password_confirmation;
-    console.log(event);
+    requestAddress(event, "address");
+    history.pushState("/vagas");
   };
 
   const [parkImage, setParkImage] = useState();

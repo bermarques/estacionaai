@@ -16,6 +16,7 @@ import {
 } from "../../Style/globalStyles";
 import { useDispatch } from "react-redux";
 import { handleAddError } from "../../Store/modules/errorMessage/actions";
+import { requestAddress } from "../../requests/requestAdress";
 
 const DriverFormComponent = () => {
   const [userImage, setUserImage] = useState();
@@ -121,8 +122,9 @@ const DriverFormComponent = () => {
               <img src={`${userImage}`} alt="Imagem do usuário"></img>
             )}
           </ImageDiv>
-          <StyledUploadButton name="image" type="file">
+          <StyledUploadButton>
             Upload
+            <input name="image" type="file" />
           </StyledUploadButton>
         </div>
         <div>
