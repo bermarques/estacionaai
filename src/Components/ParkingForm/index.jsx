@@ -25,7 +25,7 @@ const ParkingLocation = () => {
     uf: "",
     cidade: "",
   });
-  const [cep, setCep] = useState();
+  const [cep1, setCep] = useState();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
@@ -68,13 +68,10 @@ const ParkingLocation = () => {
     console.log(errors);
     const message =
       errors.image?.message ||
-      errors.street?.message ||
       errors.number?.message ||
-      errors.neighborhood?.message ||
-      errors.city?.message ||
       errors.cep?.message ||
-      errors.price?.message ||
-      errors.days?.message;
+      errors.price?.message;
+
     dispatch(handleAddError(message, "danger"));
     setTimeout(() => dispatch(handleAddError("")), 4000);
   }, [errors]);
@@ -99,8 +96,9 @@ const ParkingLocation = () => {
           ref={register}
           type="number"
           onChange={(e) => setCep(e.target.value)}
-          value={cep}
+          value={cep1}
           onBlur={onBlurCep}
+          name="cep"
         />
       </div>
       <StyledLabel>Rua</StyledLabel>
