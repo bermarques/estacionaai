@@ -8,10 +8,11 @@ import {
 } from "../../Style/globalStyles";
 import { getAddress } from "../../requests/requestAdress";
 import { useCookies } from "react-cookie";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const AvailableParkingComponents = () => {
+  const [city, setCity] = useState("");
+
   const [cookies] = useCookies();
   const [parking, setParking] = useState([]);
 
