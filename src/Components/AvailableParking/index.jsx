@@ -36,7 +36,7 @@ const AvailableParkingComponents = () => {
       <CardAvaliation>
         5<StyleStar />
       </CardAvaliation>
-      <ParkingLotBooking />
+      <ParkingLotBooking data={parking} token={cookies.token} />
     </MasterDiv>
   ));
 };
