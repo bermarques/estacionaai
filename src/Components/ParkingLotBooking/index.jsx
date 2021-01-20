@@ -1,5 +1,6 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { Blur } from "./style";
 
 import { useState } from "react";
 import axios from "axios";
@@ -11,6 +12,7 @@ const ParkingLotBooking = ({ data, token }) => {
     lastDay: "",
     parkingLotId: "",
   });
+  const [isReadable, setReadability] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -40,7 +42,7 @@ const ParkingLotBooking = ({ data, token }) => {
       .post(BaseURL, bookingDays, headers)
       .catch((error) => error.response.data);
 
-    console.log(bookingDays);
+    setReadability(true);
   };
 
   return (
@@ -65,7 +67,16 @@ const ParkingLotBooking = ({ data, token }) => {
               <input type="date" required onChange={handleLastDay} />
               <div>
                 <p>
-                  Telefone: {data.phone ? data.phone : "Telefone não informado"}
+                  Telefone:{" "}
+                  {isReadable ? (
+                    data.phone ? (
+                      data.phone
+                    ) : (
+                      "Telefone não informado"
+                    )
+                  ) : (
+                    <Blur>00 00000000</Blur>
+                  )}
                 </p>
               </div>
             </Modal.Body>
