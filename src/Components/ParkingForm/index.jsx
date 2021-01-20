@@ -17,6 +17,7 @@ import {
 } from "../../Style/globalStyles";
 import { requestAddress } from "../../requests/requestAdress";
 import { useHistory } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const ParkingLocation = () => {
   const [cepData, setCepData] = useState({
@@ -25,18 +26,18 @@ const ParkingLocation = () => {
     uf: "",
     cidade: "",
   });
-  const [cep, setCep] = useState();
+  const [cep1, setCep] = useState();
+  const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const history = useHistory;
+  const [cookies] = useCookies();
   const sendForm = (event) => {
-    console.log(event);
     const data = { ...event, image: parkImage };
-    requestAddress(data, "address");
-    history.pushState("/vagas");
+    console.log(requestAddress(data, cookies.token));
+    history.push("/vagas");
   };
 
   const [parkImage, setParkImage] = useState();
@@ -68,13 +69,10 @@ const ParkingLocation = () => {
     console.log(errors);
     const message =
       errors.image?.message ||
-      errors.street?.message ||
       errors.number?.message ||
-      errors.neighborhood?.message ||
-      errors.city?.message ||
       errors.cep?.message ||
-      errors.price?.message ||
-      errors.days?.message;
+      errors.price?.message;
+
     dispatch(handleAddError(message, "danger"));
     setTimeout(() => dispatch(handleAddError("")), 4000);
   }, [errors]);
@@ -99,8 +97,9 @@ const ParkingLocation = () => {
           ref={register}
           type="number"
           onChange={(e) => setCep(e.target.value)}
-          value={cep}
+          value={cep1}
           onBlur={onBlurCep}
+          name="cep"
         />
       </div>
       <StyledLabel>Rua</StyledLabel>
@@ -155,7 +154,7 @@ const ParkingLocation = () => {
         </div>
       </div>
       <StyledLabel>Veículos Aceitos</StyledLabel>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="car"
@@ -167,7 +166,7 @@ const ParkingLocation = () => {
           Carro
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="motorcycle"
@@ -179,7 +178,7 @@ const ParkingLocation = () => {
           Moto
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="truck"
@@ -192,7 +191,7 @@ const ParkingLocation = () => {
         </StyledLabel>
       </div>
       <StyledLabel>Tipo de locação</StyledLabel>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="daily"
@@ -204,7 +203,7 @@ const ParkingLocation = () => {
           Diária
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="weekly"
@@ -216,7 +215,7 @@ const ParkingLocation = () => {
           Semanal
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="monthly"

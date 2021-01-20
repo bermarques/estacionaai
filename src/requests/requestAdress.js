@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export const requestAddress = async (data, endPoint) => {
-  const BaseURL = `https://server-estaciona-ai.herokuapp.com/${endPoint}`;
+export const requestAddress = async (data, token) => {
+  const BaseURL = `https://server-estaciona-ai.herokuapp.com/address`;
+  const header = { headers: { Authorization: `Bearer ${token}` } };
   let res = await axios
-    .post(BaseURL, data)
+    .post(BaseURL, data, header)
     .catch((error) => error.response.data);
   return res;
 };

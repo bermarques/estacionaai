@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Nav, Dropdown } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 
 export const StyledNav = styled(Nav)`
   box-shadow: 0px 2px 6px rgba(102, 102, 102, 0.2);
@@ -7,6 +7,7 @@ export const StyledNav = styled(Nav)`
   align-content: center;
   justify-content: space-between;
   width: 100vw;
+  max-width: 100%;
 
   .menuitem {
     transform: rotate(270deg);
@@ -22,7 +23,7 @@ export const StyledNav = styled(Nav)`
     width: 50px;
   }
   .dropdown {
-    width: 100%;
+    width: 30px;
     height: 59px;
     position: absolute;
     a {
