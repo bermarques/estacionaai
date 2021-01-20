@@ -19,24 +19,28 @@ const ParkingLotBooking = ({ data, token }) => {
     setBookingDays({
       ...bookingDays,
       firstDay: evt.target.value,
-      parkingLotId: data.data,
     });
-    console.log(bookingDays);
   };
 
   const handleLastDay = (evt) => {
-    setBookingDays({ ...bookingDays, lastDay: evt.target.value });
+    setBookingDays({
+      ...bookingDays,
+      lastDay: evt.target.value,
+      parkingLotId: data.id,
+    });
   };
 
   const bookLot = (evt) => {
     evt.preventDefault();
-    const BaseURL = `https://server-estaciona-ai.herokuapp.com/reservar`;
 
+    const BaseURL = `https://server-estaciona-ai.herokuapp.com/reservar`;
     const headers = { headers: { Authorization: `Bearer ${token}` } };
+
     axios
       .post(BaseURL, bookingDays, headers)
-      .then((res) => console.log(res))
       .catch((error) => error.response.data);
+
+    console.log(bookingDays);
   };
 
   return (

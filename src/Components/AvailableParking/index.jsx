@@ -22,8 +22,8 @@ const AvailableParkingComponents = () => {
   }, []);
 
   console.log(parking);
-  return parking?.map((elmt) => (
-    <MasterDiv>
+  return parking?.map((elmt, idx) => (
+    <MasterDiv key={idx}>
       <ParkingCard>
         <img
           src="http://www.acidadevotuporanga.com.br/Images/Noticia/Grande/00000000351092886541270066537.jpg"
@@ -36,7 +36,7 @@ const AvailableParkingComponents = () => {
       <CardAvaliation>
         5<StyleStar />
       </CardAvaliation>
-      <ParkingLotBooking data={parking} token={cookies.token} />
+      <ParkingLotBooking data={parking[idx]} token={cookies.token} />
     </MasterDiv>
   ));
 };
