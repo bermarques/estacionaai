@@ -16,7 +16,6 @@ import {
 } from "../../Style/globalStyles";
 import { useDispatch } from "react-redux";
 import { handleAddError } from "../../Store/modules/errorMessage/actions";
-import { requestAddress } from "../../requests/requestAdress";
 
 const DriverFormComponent = () => {
   const [userImage, setUserImage] = useState();
@@ -128,9 +127,7 @@ const DriverFormComponent = () => {
           </StyledUploadButton>
         </div>
         <div>
-          <StyledButton type="submit" className="send-driver">
-            CADASTRAR
-          </StyledButton>
+          <StyledButton type="submit">CADASTRAR</StyledButton>
         </div>
       </StyledForm>
     </div>

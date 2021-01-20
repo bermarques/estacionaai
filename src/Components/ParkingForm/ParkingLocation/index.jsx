@@ -33,7 +33,8 @@ const ParkingLocation = () => {
 
   const history = useHistory;
   const sendForm = (event) => {
-    requestAddress(event, "address");
+    const data = { ...event, image: parkImage };
+    requestAddress(data, "address");
     history.pushState("/vagas");
   };
 
@@ -232,8 +233,8 @@ const ParkingLocation = () => {
           <ImageDiv>
             {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
           </ImageDiv>
-          <StyledUploadButton name="image" type="file">
-            Upload
+          <StyledUploadButton>
+            Upload <input name="image" type="file" />
           </StyledUploadButton>
         </div>
         <StyledButton className="button-send" type="submit">

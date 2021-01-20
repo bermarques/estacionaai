@@ -7,3 +7,12 @@ export const requestAddress = async (data, endPoint) => {
     .catch((error) => error.response.data);
   return res;
 };
+
+export const getAddress = async (token) => {
+  const BaseURL = `https://server-estaciona-ai.herokuapp.com/address`;
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  let res = await axios
+    .get(BaseURL, headers)
+    .catch((error) => error.response.data);
+  return res;
+};
