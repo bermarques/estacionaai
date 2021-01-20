@@ -31,12 +31,12 @@ const ParkingLocation = () => {
     resolver: yupResolver(schema),
   });
 
-  const history = useHistory;
+  const history = useHistory();
   const sendForm = (event) => {
     console.log(event);
     const data = { ...event, image: parkImage };
     requestAddress(data, "address");
-    history.pushState("/vagas");
+    history.push("/vagas");
   };
 
   const [parkImage, setParkImage] = useState();
