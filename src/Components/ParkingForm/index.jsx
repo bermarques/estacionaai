@@ -153,7 +153,7 @@ const ParkingLocation = () => {
         </div>
       </div>
       <StyledLabel>Veículos Aceitos</StyledLabel>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="car"
@@ -165,7 +165,7 @@ const ParkingLocation = () => {
           Carro
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="motorcycle"
@@ -177,7 +177,7 @@ const ParkingLocation = () => {
           Moto
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="truck"
@@ -190,7 +190,7 @@ const ParkingLocation = () => {
         </StyledLabel>
       </div>
       <StyledLabel>Tipo de locação</StyledLabel>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="daily"
@@ -202,7 +202,7 @@ const ParkingLocation = () => {
           Diária
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="weekly"
@@ -214,7 +214,7 @@ const ParkingLocation = () => {
           Semanal
         </StyledLabel>
       </div>
-      <div className="check-form">
+      <div>
         <StyledInput
           className="check-input"
           name="monthly"
