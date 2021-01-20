@@ -15,12 +15,12 @@ const AvailableParkingComponents = () => {
   const [cookies] = useCookies();
   const [parking, setParking] = useState([]);
 
-  useEffect(async () => {
-    const data = await getAddress(cookies.token);
-    setParking(data.data);
+  useEffect(() => {
+    getAddress(cookies.token).then((res) => {
+      setParking(res.data);
+    });
   }, []);
 
-  console.log(parking);
   return parking?.map((elmt) => (
     <MasterDiv>
       <ParkingCard>

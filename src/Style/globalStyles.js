@@ -9,8 +9,7 @@ body {
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
   font-family: 'Lato', sans-serif;
   background-color:#f7f7f7;
-  width:100vw;
-  max-width:100%;
+  max-width:100vw;
 }
 `;
 
@@ -64,7 +63,7 @@ export const StyledForm = styled.form`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  width: 100%;
+  width: 100vw;
   max-width: 400px;
 `;
 
@@ -91,7 +90,7 @@ export const StyledButton = styled.button`
 export const StyleAlert = styled(Alert)`
   position: fixed;
   top: 5vh;
-  width: 80%;
+  width: 50%;
   left: 10%;
   opacity: 0.7;
 `;
