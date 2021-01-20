@@ -62,9 +62,10 @@ export const StyledLabel = styled.label`
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  margin: 0 auto;
   width: 100%;
-  max-width: 100%;
+  max-width: 400px;
 `;
 
 export const StyledButton = styled.button`
@@ -213,6 +214,7 @@ export const ImageDiv = styled.div`
     border-radius: 20px;
     background-color: #fff;
     display: inline-block;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   }
 
   img {
