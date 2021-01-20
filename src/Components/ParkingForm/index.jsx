@@ -17,6 +17,7 @@ import {
 } from "../../Style/globalStyles";
 import { requestAddress } from "../../requests/requestAdress";
 import { useHistory } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const ParkingLocation = () => {
   const [cepData, setCepData] = useState({
@@ -32,10 +33,10 @@ const ParkingLocation = () => {
     resolver: yupResolver(schema),
   });
 
+  const [cookies] = useCookies();
   const sendForm = (event) => {
-    console.log(event);
     const data = { ...event, image: parkImage };
-    requestAddress(data, "address");
+    console.log(requestAddress(data, cookies.token));
     history.push("/vagas");
   };
 

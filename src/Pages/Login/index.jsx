@@ -1,7 +1,6 @@
 import { CarIcon } from "../../Components/icon/index";
 import LoginTabs from "../../Components/login-tabs";
 import LoginForm from "../../Components/Login/index";
-import "../../Style/Login/style.css";
 
 const Login = () => {
   return (

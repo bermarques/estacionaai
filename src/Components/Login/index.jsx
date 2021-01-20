@@ -1,4 +1,3 @@
-import "../../Style/Login/style.css";
 import { schema } from "../../Helpers/Login/index";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
