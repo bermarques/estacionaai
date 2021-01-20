@@ -5,15 +5,13 @@ import "../../Style/Login/style.css";
 
 const Login = () => {
   return (
-    <div className="master-login">
+    <>
       <CarIcon />
-      <div className="form-login">
-        <LoginTabs />
-      </div>
-      <div className="form-login">
+      <LoginTabs />
+      <div className="text-center">
         <LoginForm />
       </div>
-    </div>
+    </>
   );
 };
 

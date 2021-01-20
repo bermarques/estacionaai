@@ -13,7 +13,7 @@ import { useEffect } from "react";
 
 const AvailableParkingComponents = () => {
   const [cookies] = useCookies();
-  const [parking, setParking] = useState();
+  const [parking, setParking] = useState([]);
 
   useEffect(async () => {
     const data = await getAddress(cookies.token);
@@ -21,7 +21,7 @@ const AvailableParkingComponents = () => {
   }, []);
 
   console.log(parking);
-  return parking.map((elmt) => (
+  return parking?.map((elmt) => (
     <MasterDiv>
       <ParkingCard>
         <img

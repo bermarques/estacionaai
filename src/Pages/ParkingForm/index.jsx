@@ -1,13 +1,7 @@
-import "../../Style/ParkingForm/style.css";
-import ParkingLocation from "../../Components/ParkingForm/ParkingLocation/index";
+import ParkingLocation from "../../Components/ParkingForm";
 
 const ParkingForm = () => {
-  return (
-    <div>
-      <ParkingLocation />
-      <div className="logo-parking"></div>
-    </div>
-  );
+  return <ParkingLocation />;
 };
 
 export default ParkingForm;

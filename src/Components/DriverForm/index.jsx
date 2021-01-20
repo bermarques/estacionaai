@@ -1,4 +1,3 @@
-import "../../Style/DriverForm/style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../Helpers/DriverForm/index";
@@ -27,7 +26,9 @@ const DriverFormComponent = () => {
 
   const history = useHistory();
   const sendForm = async (event) => {
-    const response = await registerRequest(event, "register");
+    const data = { ...event, image: userImage };
+    console.log(data);
+    const response = await registerRequest(data, "register");
     if (response === "Email already exists") {
       dispatch(handleAddError("Email já cadastrado", "danger"));
     }
@@ -61,81 +62,65 @@ const DriverFormComponent = () => {
   }, [errors]);
 
   return (
-    <div>
-      <StyledForm onSubmit={handleSubmit(sendForm)}>
-        <StyledLabel>Nome</StyledLabel>
+    <StyledForm onSubmit={handleSubmit(sendForm)}>
+      <StyledLabel>Nome</StyledLabel>
+      <StyledInput type="text" placeholder="Nome" name="name" ref={register} />
+      <StyledLabel>E-mail</StyledLabel>
+      <StyledInput
+        type="email"
+        placeholder="E-mail"
+        name="email"
+        ref={register}
+      />
+      <StyledLabel>Senha</StyledLabel>
+      <div>
         <StyledInput
-          type="text"
-          placeholder="Nome"
-          name="name"
+          type={visible ? "text" : "password"}
+          placeholder="Senha"
+          name="password"
           ref={register}
         />
-        <StyledLabel>E-mail</StyledLabel>
+        <StyleVisibilityIcon
+          className="icon-visible"
+          fontSize="large"
+          onClick={() => changeVisibility()}
+        />
+      </div>
+      <StyledLabel>Confirmar Senha</StyledLabel>
+      <div>
         <StyledInput
-          type="email"
-          placeholder="E-mail"
-          name="email"
+          placeholder="Confirmação Senha"
+          type={visible ? "text" : "password"}
+          name="password_confirmation"
           ref={register}
         />
-        <StyledLabel>Senha</StyledLabel>
+        <StyleVisibilityIcon
+          className="icon-visible"
+          fontSize="large"
+          onClick={() => changeVisibility()}
+        />
+      </div>
+      <StyledLabel>Veículo</StyledLabel>
+      <StyledInput type="text" placeholder="Modelo" name="car" ref={register} />
+      <StyledLabel>Placa</StyledLabel>
+      <StyledInput
+        type="text"
+        placeholder="Placa"
+        name="plate"
+        ref={register}
+      />
+      <StyledLabel>Imagem</StyledLabel>
+      <ImageDiv>
         <div>
-          <StyledInput
-            type={visible ? "text" : "password"}
-            placeholder="Senha"
-            name="password"
-            ref={register}
-          />
-          <StyleVisibilityIcon
-            className="icon-visible"
-            fontSize="large"
-            onClick={() => changeVisibility()}
-          />
+          {userImage && <img src={`${userImage}`} alt="Imagem do usuário" />}
         </div>
-        <StyledLabel>Confirmar Senha</StyledLabel>
-        <div>
-          <StyledInput
-            placeholder="Confirmação Senha"
-            type={visible ? "text" : "password"}
-            name="password_confirmation"
-            ref={register}
-          />
-          <StyleVisibilityIcon
-            className="icon-visible"
-            fontSize="large"
-            onClick={() => changeVisibility()}
-          />
-        </div>
-        <StyledLabel>Veículo</StyledLabel>
-        <StyledInput
-          type="text"
-          placeholder="Modelo"
-          name="car"
-          ref={register}
-        />
-        <StyledLabel>Placa</StyledLabel>
-        <StyledInput
-          type="text"
-          placeholder="Placa"
-          name="plate"
-          ref={register}
-        />
-        <StyledLabel>Imagem</StyledLabel>
-        <div className="img-div">
-          <ImageDiv>
-            {userImage && (
-              <img src={`${userImage}`} alt="Imagem do usuário"></img>
-            )}
-          </ImageDiv>
-          <StyledUploadButton>
-            Upload
-            <input name="image" type="file" />
-          </StyledUploadButton>
-        </div>
-        <div>
-          <StyledButton type="submit">CADASTRAR</StyledButton>
-        </div>
-      </StyledForm>
-    </div>
+        <StyledUploadButton>
+          Upload
+          <input name="image" type="file" onChange={changeImage} />
+        </StyledUploadButton>
+      </ImageDiv>
+      <StyledButton type="submit">CADASTRAR</StyledButton>
+    </StyledForm>
   );
 };
 
