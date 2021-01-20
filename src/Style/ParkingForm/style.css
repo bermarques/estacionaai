@@ -1,0 +1,15 @@
+.input-form-city {
+  width: 180px !important;
+  height: 45px;
+  border-radius: 28.5px;
+  background-color: #ffff;
+  box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+}
+
+.input-form-state {
+  width: 90px !important;
+  height: 45px;
+  border-radius: 28.5px;
+  background-color: #ffff;
+  box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+}

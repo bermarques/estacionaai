@@ -1,66 +1,6 @@
-@media only screen and (max-width: 360px) {
-  .welcome {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .welcome-button {
-    margin-left: 15% !important;
-  }
-}
-
 .welcome {
   background-image: url("../IMG/welcome.png");
   width: 49.938rem;
   height: 33.375rem;
-  margin: 0 auto;
-}
-
-.master-welcome {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 0.813rem;
-  line-height: 1.688rem;
-  color: #484848;
-  background-color: #e5e5e5;
-  width: 100vw;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.welcome-button {
-  width: 15.625rem;
-  height: 2.188rem;
-  background-color: #152764;
-  color: #ffff;
-  font-size: 1.125rem;
-  border-radius: 0.563rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  margin: 0 auto;
-  padding-top: 1%;
-}
-
-.welcome-button:hover {
-  background-color: #05668d;
-}
-
-.title {
-  font-family: Baloo;
-  font-size: 26px;
-  line-height: 28px;
-  color: #152764;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin: 0 auto;
 }
