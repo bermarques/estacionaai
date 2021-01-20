@@ -109,10 +109,9 @@ export const ParkingCard = styled.div`
   overflow: hidden;
   padding: 0 0 32px;
   margin: 48px auto 0;
-  height: 250px;
+  height: auto;
   width: 200px;
   max-width: 200px;
-  max-height: 250px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
   img {
@@ -217,6 +216,6 @@ export const ImageDiv = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 `;
