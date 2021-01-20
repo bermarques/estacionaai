@@ -41,8 +41,8 @@ const Routes = () => {
         <>
           <Header />
           <Switch>
-            <Route exact path="/vagas" component={AvailableParking} />
             <Route exact path="/cadastroDeVagas" component={ParkingForm} />
+            <Route exact path="/vagas" component={AvailableParking} />
           </Switch>
         </>
       )}

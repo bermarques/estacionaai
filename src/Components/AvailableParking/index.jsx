@@ -6,6 +6,7 @@ import {
   StyleStar,
   CardAvaliation,
 } from "../../Style/globalStyles";
+import ParkingLotBooking from "../ParkingLotBooking";
 import { getAddress } from "../../requests/requestAdress";
 import { useCookies } from "react-cookie";
 import { useState } from "react";
@@ -21,8 +22,8 @@ const AvailableParkingComponents = () => {
     });
   }, []);
 
-  return parking?.map((elmt) => (
-    <MasterDiv>
+  return parking?.map((elmt, idx) => (
+    <MasterDiv key={idx}>
       <ParkingCard>
         <img src={elmt.image} alt="Vaga" />
       </ParkingCard>
@@ -33,6 +34,7 @@ const AvailableParkingComponents = () => {
           (elmt.monthly && "Locação Mensal ")}
       </CardDescription>
       <CardDescription> {elmt.price} - R$</CardDescription>
+      <ParkingLotBooking data={parking[idx]} token={cookies.token} />
     </MasterDiv>
   ));
 };
