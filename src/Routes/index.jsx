@@ -13,11 +13,13 @@ import Header from "../Components/Header";
 import { useCookies } from "react-cookie";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Loading from "../Pages/Loading";
 
 const Routes = () => {
   const { message, typeMessage } = useSelector((state) => state.errorMessage);
 
   const { user } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.loading);
 
   const [cookies] = useCookies();
 
@@ -33,16 +35,28 @@ const Routes = () => {
       <GlobalStyle />
       {message && <StyleAlert variant={typeMessage}>{message}</StyleAlert>}
       <Switch>
-        <Route exact path="/" component={Welcome} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+          </>
+        )}
       </Switch>
       {user !== "" && (
         <>
           <Header />
           <Switch>
-            <Route exact path="/cadastroDeVagas" component={ParkingForm} />
-            <Route exact path="/vagas" component={AvailableParking} />
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <Route exact path="/cadastroDeVagas" component={ParkingForm} />
+                <Route exact path="/vagas" component={AvailableParking} />
+              </>
+            )}
           </Switch>
         </>
       )}
