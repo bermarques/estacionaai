@@ -26,12 +26,12 @@ const ParkingLocation = () => {
     cidade: "",
   });
   const [cep1, setCep] = useState();
+  const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const history = useHistory();
   const sendForm = (event) => {
     console.log(event);
     const data = { ...event, image: parkImage };
