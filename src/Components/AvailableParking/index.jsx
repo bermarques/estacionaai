@@ -6,9 +6,22 @@ import {
   StyleStar,
   CardAvaliation,
 } from "../../Style/globalStyles";
+import { getAddress } from "../../requests/requestAdress";
+import { useCookies } from "react-cookie";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const AvailableParkingComponents = () => {
-  return (
+  const [cookies] = useCookies();
+  const [parking, setParking] = useState([]);
+
+  useEffect(async () => {
+    const data = await getAddress(cookies.token);
+    setParking(data.data);
+  }, []);
+
+  console.log(parking);
+  return parking?.map((elmt) => (
     <MasterDiv>
       <ParkingCard>
         <img
@@ -23,7 +36,7 @@ const AvailableParkingComponents = () => {
         5<StyleStar />
       </CardAvaliation>
     </MasterDiv>
-  );
+  ));
 };
 
 export default AvailableParkingComponents;
