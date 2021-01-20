@@ -34,6 +34,7 @@ const ParkingLocation = () => {
   };
 
   const [parkImage, setParkImage] = useState();
+
   const changeImage = async (e) => {
     setParkImage(await uploadImage(e));
   };
@@ -228,11 +229,11 @@ const ParkingLocation = () => {
           <ImageDiv>
             {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
           </ImageDiv>
-          <StyledUploadButton name="image" type="file">
-            Upload
+          <StyledUploadButton>
+            Upload <input name="image" type="file" onChange={changeImage} />
           </StyledUploadButton>
         </div>
-        <StyledButton className="button-send" type="submit">
+        <StyledButton className="button-send-parking" type="submit">
           Enviar
         </StyledButton>
       </StyledForm>
