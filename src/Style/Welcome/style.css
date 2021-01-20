@@ -4,10 +4,3 @@
   height: 33.375rem;
   margin: 0 auto;
 }
-
-.center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-}
