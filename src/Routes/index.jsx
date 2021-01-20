@@ -6,13 +6,27 @@ import Login from "../Pages/Login";
 import ParkingForm from "../Pages/ParkingForm/index";
 import AvailableParking from "../Pages/AvailableParking/index";
 import EndingBar from "../Components/ending-bar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addUserThunk } from "../Store/modules/user/thunk";
 import { StyleAlert } from "../Style/globalStyles";
 import Header from "../Components/Header";
+import { useCookies } from "react-cookie";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const Routes = () => {
   const { message, typeMessage } = useSelector((state) => state.errorMessage);
-  console.log(typeMessage);
+
+  const { user } = useSelector((state) => state.user);
+
+  const [cookies] = useCookies();
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    cookies.token && dispatch(addUserThunk(cookies.token, cookies.ID));
+    user !== "" && history.push("/vagas");
+  }, []);
 
   return (
     <>
@@ -20,17 +34,18 @@ const Routes = () => {
       {message && <StyleAlert variant={typeMessage}>{message}</StyleAlert>}
       <Switch>
         <Route exact path="/" component={Welcome} />
-        <Route exact path="/available" component={AvailableParking} />
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
-        <Route exact path="/parking">
-          <ParkingForm />
-        </Route>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
       </Switch>
+      {user !== "" && (
+        <>
+          <Header />
+          <Switch>
+            <Route exact path="/vagas" component={AvailableParking} />
+            <Route exact path="/cadastroDeVagas" component={ParkingForm} />
+          </Switch>
+        </>
+      )}
       <EndingBar />
     </>
   );

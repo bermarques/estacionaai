@@ -13,6 +13,8 @@ import {
   StyledForm,
   StyledButton,
   StyledSelect,
+  StyledUploadButton,
+  ImageDiv,
 } from "../../../Style/globalStyles";
 
 const ParkingLocation = () => {
@@ -30,7 +32,9 @@ const ParkingLocation = () => {
     delete event.password_confirmation;
     console.log(event);
   };
+
   const [parkImage, setParkImage] = useState();
+
   const changeImage = async (e) => {
     setParkImage(await uploadImage(e));
   };
@@ -70,8 +74,7 @@ const ParkingLocation = () => {
 
   return (
     <div className="master-parking-form">
-      <StyledForm onSubmit={handleSubmit(sendForm)}>
-        {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
+      <StyledForm onSubmit={handleSubmit(sendForm)} className="style-form-park">
         {parkingFormdata.map(({ placeholder, name, type }, index) => (
           <div>
             <div>{placeholder}</div>
@@ -115,25 +118,31 @@ const ParkingLocation = () => {
           disabled={!cepData.bairro}
           ref={register}
         />
-        Cidade
-        <StyledInput
-          className="input-form"
-          name="city"
-          type="text"
-          value={cepData.cidade}
-          disabled={!cepData.cidade}
-          ref={register}
-        />
-        Estado
-        <StyledSelect
-          className="input-form"
-          name="state"
-          disabled={!cepData.uf}
-        >
-          <option ref={register} value={cepData.uf} className="input-form">
-            {cepData.uf}
-          </option>
-        </StyledSelect>
+        <div className="img-div-park">
+          <div>
+            Cidade
+            <StyledInput
+              className="input-form-city"
+              name="city"
+              type="text"
+              value={cepData.cidade}
+              disabled={!cepData.cidade}
+              ref={register}
+            />
+          </div>
+          <div>
+            Estado
+            <StyledSelect
+              className="input-form-state"
+              name="state"
+              disabled={!cepData.uf}
+            >
+              <option ref={register} value={cepData.uf} className="input-form">
+                {cepData.uf}
+              </option>
+            </StyledSelect>
+          </div>
+        </div>
         Valor
         <StyledInput
           className="input-form"
@@ -215,7 +224,16 @@ const ParkingLocation = () => {
             Mensal
           </StyledLabel>
         </div>
-        <StyledButton className="button-send" type="submit">
+        <StyledLabel>Foto da Garagem</StyledLabel>{" "}
+        <div className="img-div-park">
+          <ImageDiv>
+            {parkImage && <img src={`${parkImage}`} alt="imagem da vaga"></img>}
+          </ImageDiv>
+          <StyledUploadButton>
+            Upload <input name="image" type="file" onChange={changeImage} />
+          </StyledUploadButton>
+        </div>
+        <StyledButton className="button-send-parking" type="submit">
           Enviar
         </StyledButton>
       </StyledForm>

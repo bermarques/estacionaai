@@ -7,3 +7,17 @@
 .form-login {
   margin-left: 44.5%;
 }
+
+@media only screen and (max-width: 360px) {
+  .master-login {
+    width: 100%;
+    margin: 10px auto;
+  }
+  .form-login {
+    width: 100%;
+    margin-left: 2%;
+  }
+  .send-button-login {
+    margin-left: 14% !important;
+  }
+}

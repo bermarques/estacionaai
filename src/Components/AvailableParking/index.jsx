@@ -11,7 +11,12 @@ import ParkingLotBooking from "../ParkingLotBooking";
 const AvailableParkingComponents = () => {
   return (
     <MasterDiv>
-      <ParkingCard />
+      <ParkingCard>
+        <img
+          src="http://www.acidadevotuporanga.com.br/Images/Noticia/Grande/00000000351092886541270066537.jpg"
+          alt="Vaga"
+        />
+      </ParkingCard>
       <CardLabel>Curitiba</CardLabel>
       <CardDescription> 1 Vaga - Mensal</CardDescription>
       <CardDescription> R$ 200,00</CardDescription>

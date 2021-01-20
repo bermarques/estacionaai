@@ -3,9 +3,8 @@ import requestUserData from "../../../requests/RequestUser";
 
 export const addUserThunk = (token, userID) => {
   return async (dispatch, state) => {
-    const user = await requestUserData(token, userID);
-    console.log(user.data);
+    const user = token !== "" ? await requestUserData(token, userID).data : "";
 
-    dispatch(handleUser(user.data));
+    dispatch(handleUser(user));
   };
 };
