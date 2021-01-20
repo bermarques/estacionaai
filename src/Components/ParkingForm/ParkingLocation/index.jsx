@@ -39,6 +39,7 @@ const ParkingLocation = () => {
   };
 
   const [parkImage, setParkImage] = useState();
+
   const changeImage = async (e) => {
     setParkImage(await uploadImage(e));
   };
@@ -237,7 +238,7 @@ const ParkingLocation = () => {
             Upload <input name="image" type="file" />
           </StyledUploadButton>
         </div>
-        <StyledButton className="button-send" type="submit">
+        <StyledButton className="button-send-parking" type="submit">
           Enviar
         </StyledButton>
       </StyledForm>

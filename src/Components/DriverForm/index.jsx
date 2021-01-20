@@ -16,6 +16,7 @@ import {
 } from "../../Style/globalStyles";
 import { useDispatch } from "react-redux";
 import { handleAddError } from "../../Store/modules/errorMessage/actions";
+import uploadImage from "../../requests/uploadImages";
 
 const DriverFormComponent = () => {
   const [userImage, setUserImage] = useState();
@@ -40,6 +41,10 @@ const DriverFormComponent = () => {
     } else {
       setVisible(true);
     }
+  };
+
+  const changeImage = async (e) => {
+    setUserImage(await uploadImage(e));
   };
 
   const dispatch = useDispatch();

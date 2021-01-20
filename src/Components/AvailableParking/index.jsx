@@ -23,8 +23,13 @@ const AvailableParkingComponents = () => {
   console.log(parking);
   return parking.map((elmt) => (
     <MasterDiv>
-      <ParkingCard />
-      <CardLabel>{elmt.city}</CardLabel>
+      <ParkingCard>
+        <img
+          src="http://www.acidadevotuporanga.com.br/Images/Noticia/Grande/00000000351092886541270066537.jpg"
+          alt="Vaga"
+        />
+      </ParkingCard>
+      <CardLabel>Curitiba</CardLabel>
       <CardDescription> 1 Vaga - Mensal</CardDescription>
       <CardDescription> R$ 200,00</CardDescription>
       <CardAvaliation>
