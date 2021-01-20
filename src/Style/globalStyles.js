@@ -9,7 +9,8 @@ body {
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
   font-family: 'Lato', sans-serif;
   background-color:#f7f7f7;
-  max-width:100vw
+  width:100vw;
+  max-width:100%;
 }
 `;
 
@@ -48,6 +49,7 @@ export const StyledSelect = styled.select`
 `;
 
 export const StyledLabel = styled.label`
+  margin: 0 auto;
   font-weight: bold;
   color: #484848;
   font-size: 13px;
@@ -61,22 +63,21 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
 `;
 
 export const StyledButton = styled.button`
-  margin-top: 20px;
   background-color: #152764;
   color: white;
   height: 45px;
   border: none;
   border-radius: 28.5px;
   width: 250px;
-  margin-left: 1%;
   cursor: pointer;
   margin: 20px auto;
   outline: none;
+  margin: 20px auto;
 
   :hover {
     background-color: #05668d;
@@ -87,8 +88,8 @@ export const StyledButton = styled.button`
 `;
 
 export const StyleAlert = styled(Alert)`
-  position: absolute;
-  top: 50vh;
+  position: fixed;
+  top: 5vh;
   width: 80%;
   left: 10%;
   opacity: 0.7;
@@ -177,7 +178,9 @@ export const StyledTitle = styled.label`
 `;
 
 export const StyledUploadButton = styled.label`
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #152764;
   color: white;
   height: 45px;
@@ -185,28 +188,32 @@ export const StyledUploadButton = styled.label`
   border-radius: 28.5px;
   width: 100px;
   cursor: pointer;
-  margin-left: 2%;
-  outline: none;
   text-align: center;
+  outline: none;
   font-size: 20px;
   :hover {
     background-color: #05668d;
   }
-
-  input {
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-  }
 `;
 
 export const ImageDiv = styled.div`
-  width: 190px;
-  height: 100px;
-  max-width: 190px;
-  max-height: 100px;
-  border-radius: 28px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  input {
+    display: none;
+    height: 100%;
+    width: 100%;
+  }
+
+  div {
+    margin-left: 15px;
+    width: 50%;
+    height: 150px;
+    border-radius: 20px;
+    background-color: #fff;
+    display: inline-block;
+  }
 
   img {
     width: 100%;
