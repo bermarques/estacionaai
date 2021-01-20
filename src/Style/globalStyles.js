@@ -9,8 +9,7 @@ body {
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
   font-family: 'Lato', sans-serif;
   background-color:#f7f7f7;
-  width:100vw;
-  max-width:100%;
+  max-width:100vw;
 }
 `;
 
@@ -64,7 +63,7 @@ export const StyledForm = styled.form`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  width: 100%;
+  width: 100vw;
   max-width: 400px;
 `;
 
@@ -91,7 +90,7 @@ export const StyledButton = styled.button`
 export const StyleAlert = styled(Alert)`
   position: fixed;
   top: 5vh;
-  width: 80%;
+  width: 50%;
   left: 10%;
   opacity: 0.7;
 `;
@@ -110,10 +109,9 @@ export const ParkingCard = styled.div`
   overflow: hidden;
   padding: 0 0 32px;
   margin: 48px auto 0;
-  height: 250px;
+  height: auto;
   width: 200px;
   max-width: 200px;
-  max-height: 250px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
   img {
@@ -219,7 +217,7 @@ export const ImageDiv = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 `;
 
