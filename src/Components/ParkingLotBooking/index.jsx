@@ -5,8 +5,7 @@ import { Blur } from "./style";
 import { useState } from "react";
 import axios from "axios";
 
-const ParkingLotBooking = ({ data, token }) => {
-  const [show, setShow] = useState(false);
+const ParkingLotBooking = ({ show, setShow, data, token }) => {
   const [bookingDays, setBookingDays] = useState({
     firstDay: "",
     lastDay: "",
@@ -15,7 +14,6 @@ const ParkingLotBooking = ({ data, token }) => {
   const [isReadable, setReadability] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleFirstDay = (evt) => {
     setBookingDays({
@@ -47,10 +45,6 @@ const ParkingLotBooking = ({ data, token }) => {
 
   return (
     <>
-      <Button varant="primary" onClick={handleShow}>
-        Reservar vaga
-      </Button>
-
       <Modal
         show={show}
         onHide={handleClose}
