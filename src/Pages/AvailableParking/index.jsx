@@ -1,7 +1,7 @@
 import AvailableParkingComponents from "../../Components/AvailableParking/index";
 import SearchParking from "../../Components/SearchParking/index";
 import { useState } from "react";
-import { StyledInput, StyledButton } from "../../Style/globalStyles";
+import { StyledInput, StyledButton, MasterDiv } from "../../Style/globalStyles";
 
 const AvailableParking = () => {
   const [cityes, setCityes] = useState("");
@@ -17,11 +17,13 @@ const AvailableParking = () => {
 
   return (
     <>
-      <div>
-        <StyledInput
-          placeholder="Buscar por cidade"
-          onChange={(e) => setCityes(e.target.value)}
-        />
+      <MasterDiv>
+        <div>
+          <StyledInput
+            placeholder="Buscar por cidade"
+            onChange={(e) => setCityes(e.target.value)}
+          />
+        </div>
         {activeSearch === false ? (
           <StyledButton onClick={() => searchCity()}>Buscar</StyledButton>
         ) : (
@@ -29,7 +31,7 @@ const AvailableParking = () => {
             Todas as Vagas
           </StyledButton>
         )}
-      </div>
+      </MasterDiv>
       {activeSearch === false ? (
         <AvailableParkingComponents />
       ) : (
