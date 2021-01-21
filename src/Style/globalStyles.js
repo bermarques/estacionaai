@@ -48,12 +48,11 @@ export const StyledSelect = styled.select`
 `;
 
 export const StyledLabel = styled.label`
-  margin: 0 auto;
   font-weight: bold;
+  width: 100%;
   color: #484848;
   font-size: 13px;
   line-height: 27px;
-  width: 100%;
   text-align: left;
   margin-left: 20px;
 `;
@@ -89,9 +88,10 @@ export const StyledButton = styled.button`
 
 export const StyleAlert = styled(Alert)`
   position: fixed;
-  top: 5vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 50%;
-  left: 10%;
   opacity: 0.7;
 `;
 
