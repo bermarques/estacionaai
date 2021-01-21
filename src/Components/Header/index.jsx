@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <StyledNav>
       <NavItem>
-        <Nav.Link>
+        <Nav.Link onClick={() => history.goBack()}>
           <BackIcon size="30px" />
         </Nav.Link>
       </NavItem>
