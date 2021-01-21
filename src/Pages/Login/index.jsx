@@ -7,9 +7,7 @@ const Login = () => {
     <>
       <CarIcon />
       <LoginTabs />
-      <div className="text-center">
-        <LoginForm />
-      </div>
+      <LoginForm />
     </>
   );
 };

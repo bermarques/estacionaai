@@ -1,14 +1,3 @@
-import {
-  ParkingCard,
-  CardLabel,
-  CardDescription,
-  MasterDiv,
-  StyleStar,
-  CardAvaliation,
-  StyledInput,
-  StyledSelect,
-  StyledLabel,
-} from "../../Style/globalStyles";
 import ParkingLotBooking from "../ParkingLotBooking";
 import { getAddress } from "../../requests/requestAdress";
 import { useCookies } from "react-cookie";
@@ -23,8 +12,6 @@ import axios from "axios";
 const AvailableParkingComponents = () => {
   const [show, setShow] = useState(false);
   const [showMore, setShowMore] = useState(false);
-  const [city, setCity] = useState("");
-  const [selectedState, setSelectedStates] = useState("");
   const [cookies] = useCookies();
   const [parking, setParking] = useState([]);
 
