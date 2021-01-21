@@ -1,6 +1,11 @@
 import styled, { css } from "styled-components";
 import { Card } from "react-bootstrap";
 
+export const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 export const StyledCard = styled(Card)`
   width: 90vw;
   margin: 20px auto;
@@ -12,6 +17,21 @@ export const StyledCard = styled(Card)`
     button {
       background-color: #01e6b4;
       border: none;
+    }
+  }
+  @media (min-width: 1200px) {
+    overflow: hidden;
+    padding: 0 0 32px;
+    margin: 48px auto 0;
+    height: auto;
+    width: 400px;
+    max-width: 400px;
+    border-radius: 5px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
     }
   }
 `;
