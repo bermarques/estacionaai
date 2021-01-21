@@ -10,6 +10,8 @@ const ParkingLotBooking = ({ show, setShow, data, token }) => {
     firstDay: "",
     lastDay: "",
     parkingLotId: "",
+    userId: data.id,
+    Owner: data.userId,
   });
   const [isReadable, setReadability] = useState(false);
 

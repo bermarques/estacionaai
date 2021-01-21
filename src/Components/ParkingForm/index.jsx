@@ -35,7 +35,7 @@ const ParkingLocation = () => {
 
   const [cookies] = useCookies();
   const sendForm = (event) => {
-    const data = { ...event, image: parkImage };
+    const data = { ...event, image: parkImage, userId: cookies.ID };
     console.log(requestAddress(data, cookies.token));
     history.push("/vagas");
   };
@@ -153,22 +153,22 @@ const ParkingLocation = () => {
           </StyledSelect>
         </div>
       </div>
+      <StyledLabel>Telefone para contato</StyledLabel>
+      <StyledInput
+        name="phone"
+        type="number"
+        ref={register}
+        placeholder="Telefone"
+      />
       <StyledLabel>Veículos Aceitos</StyledLabel>
       <div>
-        <StyledInput
-          className="check-input"
-          name="car"
-          type="checkbox"
-          ref={register}
-          value={true}
-        />
+        <StyledInput name="car" type="checkbox" ref={register} value={true} />
         <StyledLabel for="car" value="car">
           Carro
         </StyledLabel>
       </div>
       <div>
         <StyledInput
-          className="check-input"
           name="motorcycle"
           type="checkbox"
           ref={register}
@@ -179,33 +179,20 @@ const ParkingLocation = () => {
         </StyledLabel>
       </div>
       <div>
-        <StyledInput
-          className="check-input"
-          name="truck"
-          type="checkbox"
-          ref={register}
-          value={true}
-        />
+        <StyledInput name="truck" type="checkbox" ref={register} value={true} />
         <StyledLabel for="truck" value="truck">
           Caminhonete
         </StyledLabel>
       </div>
       <StyledLabel>Tipo de locação</StyledLabel>
       <div>
-        <StyledInput
-          className="check-input"
-          name="daily"
-          type="checkbox"
-          ref={register}
-          value={true}
-        />
+        <StyledInput name="daily" type="checkbox" ref={register} value={true} />
         <StyledLabel for="daily" value="daily">
           Diária
         </StyledLabel>
       </div>
       <div>
         <StyledInput
-          className="check-input"
           name="weekly"
           type="checkbox"
           ref={register}
@@ -217,7 +204,6 @@ const ParkingLocation = () => {
       </div>
       <div>
         <StyledInput
-          className="check-input"
           name="monthly"
           type="checkbox"
           ref={register}
