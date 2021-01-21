@@ -1,0 +1,8 @@
+.welcome {
+  background-image: url("../IMG/welcome.png");
+  width: 100%;
+  max-width: 49.938rem;
+  height: 33.375rem;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
