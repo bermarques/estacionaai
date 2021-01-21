@@ -19,7 +19,7 @@ import uploadImage from "../../requests/uploadImages";
 import { changeLoading } from "../../Store/modules/loading/actions";
 
 const DriverFormComponent = () => {
-  const [userImage, setUserImage] = useState();
+  const [userImage, setUserImage] = useState("");
   const [visible, setVisible] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),

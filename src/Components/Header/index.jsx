@@ -4,13 +4,16 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BackIcon } from "../icon/index";
 import { useCookies } from "react-cookie";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUserThunk } from "../../Store/modules/user/thunk";
 
 const Header = () => {
   const [title, setTitle] = useState("");
 
   const { pathname } = useLocation();
+
+  const { user } = useSelector((state) => state.user);
+  console.log(user);
 
   const history = useHistory();
   useEffect(() => {
@@ -26,6 +29,7 @@ const Header = () => {
     dispatch(addUserThunk(""));
     history.push("/");
   };
+  console.log(user);
   return (
     <StyledNav>
       <NavItem>
@@ -39,7 +43,11 @@ const Header = () => {
       <NavItem>
         <Image
           className="avatar"
-          src="https://pbs.twimg.com/profile_images/1042181136720453632/yzc4rno0_400x400.jpg"
+          src={
+            user.image
+              ? user.image
+              : "https://pbs.twimg.com/profile_images/1042181136720453632/yzc4rno0_400x400.jpg"
+          }
           roundedCircle
         />
         <BackIcon className="menuitem" size="10px" />
