@@ -18,6 +18,7 @@ import {
 import { requestAddress } from "../../requests/requestAdress";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { StyledCheckLabel, StyledCheckInput } from "./style";
 
 const ParkingLocation = () => {
   const [cepData, setCepData] = useState({
@@ -35,7 +36,7 @@ const ParkingLocation = () => {
 
   const [cookies] = useCookies();
   const sendForm = (event) => {
-    const data = { ...event, image: parkImage };
+    const data = { ...event, image: parkImage, userId: cookies.ID };
     console.log(requestAddress(data, cookies.token));
     history.push("/vagas");
   };
@@ -153,79 +154,80 @@ const ParkingLocation = () => {
           </StyledSelect>
         </div>
       </div>
+      <StyledLabel>Telefone para contato</StyledLabel>
+      <StyledInput
+        name="phone"
+        type="number"
+        ref={register}
+        placeholder="Telefone"
+      />
       <StyledLabel>Veículos Aceitos</StyledLabel>
       <div>
-        <StyledInput
-          className="check-input"
+        <StyledCheckInput
           name="car"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="car" value="car">
+        <StyledCheckLabel for="car" value="car">
           Carro
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput
-          className="check-input"
+        <StyledCheckInput
           name="motorcycle"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="motorcycle" value="motorcycle">
+        <StyledCheckLabel for="motorcycle" value="motorcycle">
           Moto
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput
-          className="check-input"
+        <StyledCheckInput
           name="truck"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="truck" value="truck">
+        <StyledCheckLabel for="truck" value="truck">
           Caminhonete
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <StyledLabel>Tipo de locação</StyledLabel>
       <div>
-        <StyledInput
-          className="check-input"
+        <StyledCheckInput
           name="daily"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="daily" value="daily">
+        <StyledCheckLabel for="daily" value="daily">
           Diária
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput
-          className="check-input"
+        <StyledCheckInput
           name="weekly"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="weekly" value="weekly">
+        <StyledCheckLabel for="weekly" value="weekly">
           Semanal
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput
-          className="check-input"
+        <StyledCheckInput
           name="monthly"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="monthly" value="monthly">
+        <StyledCheckLabel for="monthly" value="monthly">
           Mensal
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <StyledLabel>Foto da Garagem</StyledLabel>{" "}
       <ImageDiv>

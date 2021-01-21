@@ -49,7 +49,7 @@ export const StyledSelect = styled.select`
 
 export const StyledLabel = styled.label`
   font-weight: bold;
-  width: 100%;
+  width: 80%;
   color: #484848;
   font-size: 13px;
   line-height: 27px;
