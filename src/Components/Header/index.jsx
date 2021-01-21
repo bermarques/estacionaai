@@ -29,7 +29,6 @@ const Header = () => {
     dispatch(addUserThunk(""));
     history.push("/");
   };
-  console.log(user);
   return (
     <StyledNav>
       <NavItem>
