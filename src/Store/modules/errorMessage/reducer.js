@@ -4,7 +4,6 @@ const defaultState = { message: "" };
 
 const reducer = (state = defaultState, action) => {
   const { type, errorMessage, typeMessage } = action;
-  console.log(errorMessage);
 
   switch (type) {
     case errorPost:

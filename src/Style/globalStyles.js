@@ -218,3 +218,50 @@ export const ImageDiv = styled.div`
     height: auto;
   }
 `;
+
+export const WelcomeButton = styled.button`
+  margin: 0 auto;
+  width: 15.625rem;
+  height: 2.188rem;
+  background-color: #152764;
+  color: #ffff;
+  font-size: 1.125rem;
+  border-radius: 0.563rem;
+  margin: 20px auto;
+  cursor: pointer;
+  margin: 0 auto;
+  text-align: center;
+  outline: none;
+  border: none;
+  :hover {
+    background-color: #05668d;
+  }
+  ${(props) => css`
+    width: ${props.width};
+  `}
+`;
+
+export const WelcomeTitle = styled.label`
+  font-family: Baloo;
+  font-size: 26px;
+  line-height: 28px;
+  color: #152764;
+  text-align: center;
+  margin: 0 auto;
+`;
+
+export const MasterWelcome = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.813rem;
+  line-height: 1.688rem;
+  color: #484848;
+  background-color: #e5e5e5;
+  width: 100vw;
+  max-width: 100%;
+  margin: 0 auto;
+`;

@@ -30,6 +30,8 @@ const Routes = () => {
     user !== "" && history.push("/vagas");
   }, []);
 
+  console.log(message);
+
   return (
     <>
       <GlobalStyle />

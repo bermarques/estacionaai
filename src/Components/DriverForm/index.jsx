@@ -16,6 +16,7 @@ import {
 import { useDispatch } from "react-redux";
 import { handleAddError } from "../../Store/modules/errorMessage/actions";
 import uploadImage from "../../requests/uploadImages";
+import { changeLoading } from "../../Store/modules/loading/actions";
 
 const DriverFormComponent = () => {
   const [userImage, setUserImage] = useState();
@@ -24,16 +25,21 @@ const DriverFormComponent = () => {
     resolver: yupResolver(schema),
   });
 
+  const dispatch = useDispatch();
   const history = useHistory();
   const sendForm = async (event) => {
+    dispatch(changeLoading(true));
     const data = { ...event, image: userImage };
     console.log(data);
     const response = await registerRequest(data, "register");
     if (response === "Email already exists") {
+      dispatch(changeLoading(false));
+
       dispatch(handleAddError("Email já cadastrado", "danger"));
     }
     setTimeout(() => dispatch(handleAddError("")), 4000);
     response.status === 201 && history.push("/login");
+    dispatch(changeLoading(false));
   };
 
   const changeVisibility = () => {
@@ -48,8 +54,8 @@ const DriverFormComponent = () => {
     setUserImage(await uploadImage(e));
   };
 
-  const dispatch = useDispatch();
   useEffect(() => {
+    console.log(errors);
     const message =
       errors.name?.message ||
       errors.email?.message ||
@@ -57,7 +63,7 @@ const DriverFormComponent = () => {
       errors.password_confirmation?.message ||
       errors.car?.message ||
       errors.plate?.message;
-    dispatch(handleAddError(message, "danger"));
+    message && dispatch(handleAddError(message, "danger"));
     setTimeout(() => dispatch(handleAddError("")), 4000);
   }, [errors]);
 

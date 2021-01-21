@@ -1,7 +1,7 @@
 import { schema } from "../../Helpers/Login/index";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import requestUser from "../../requests/Register";
 import jwt_decode from "jwt-decode";
 import { addUserThunk } from "../../Store/modules/user/thunk";
@@ -14,7 +14,8 @@ import {
   StyleVisibilityIcon,
 } from "../../Style/globalStyles";
 import { useCookies } from "react-cookie";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { changeLoading } from "../../Store/modules/loading/actions";
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
