@@ -111,11 +111,9 @@ const LoginForm = () => {
           onClick={() => changeVisibility()}
         />
       </div>
-      <div>
-        <StyledButton type="submit" className="send-button-login">
-          Entrar
-        </StyledButton>
-      </div>
+      <StyledButton type="submit" className="send-button-login">
+        Entrar
+      </StyledButton>
     </StyledForm>
   );
 };
