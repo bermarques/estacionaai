@@ -13,10 +13,6 @@ const Welcome = () => {
     <MasterWelcome>
       <CarIcon />
       <WelcomeTitle>Um novo conceito em garagens</WelcomeTitle>
-      <WelcomeButton onClick={() => history.push("/cadastroDeVagas")}>
-        Expore garagens perto de você!
-      </WelcomeButton>
-      <br />
       <WelcomeButton onClick={() => history.push("/login")}>
         Entre
       </WelcomeButton>
