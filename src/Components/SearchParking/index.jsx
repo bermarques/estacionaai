@@ -51,7 +51,7 @@ const SearchParking = ({ cityes }) => {
                     (weekly && "Locação Semanal") ||
                     (monthly && "Locação Mensal ")}
                 </Card.Subtitle>
-                <Card.Text>Valor: {price} R$</Card.Text>
+                <Card.Text>Valor: R${price} </Card.Text>
                 <MapContainer show={showMore}>
                   <Map
                     isMarkerShown
