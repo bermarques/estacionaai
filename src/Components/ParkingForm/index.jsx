@@ -18,6 +18,7 @@ import {
 import { requestAddress } from "../../requests/requestAdress";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { StyledCheckLabel, StyledCheckInput } from "./style";
 
 const ParkingLocation = () => {
   const [cepData, setCepData] = useState({
@@ -162,56 +163,71 @@ const ParkingLocation = () => {
       />
       <StyledLabel>Veículos Aceitos</StyledLabel>
       <div>
-        <StyledInput name="car" type="checkbox" ref={register} value={true} />
-        <StyledLabel for="car" value="car">
+        <StyledCheckInput
+          name="car"
+          type="checkbox"
+          ref={register}
+          value={true}
+        />
+        <StyledCheckLabel for="car" value="car">
           Carro
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput
+        <StyledCheckInput
           name="motorcycle"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="motorcycle" value="motorcycle">
+        <StyledCheckLabel for="motorcycle" value="motorcycle">
           Moto
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput name="truck" type="checkbox" ref={register} value={true} />
-        <StyledLabel for="truck" value="truck">
+        <StyledCheckInput
+          name="truck"
+          type="checkbox"
+          ref={register}
+          value={true}
+        />
+        <StyledCheckLabel for="truck" value="truck">
           Caminhonete
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <StyledLabel>Tipo de locação</StyledLabel>
       <div>
-        <StyledInput name="daily" type="checkbox" ref={register} value={true} />
-        <StyledLabel for="daily" value="daily">
+        <StyledCheckInput
+          name="daily"
+          type="checkbox"
+          ref={register}
+          value={true}
+        />
+        <StyledCheckLabel for="daily" value="daily">
           Diária
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput
+        <StyledCheckInput
           name="weekly"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="weekly" value="weekly">
+        <StyledCheckLabel for="weekly" value="weekly">
           Semanal
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <div>
-        <StyledInput
+        <StyledCheckInput
           name="monthly"
           type="checkbox"
           ref={register}
           value={true}
         />
-        <StyledLabel for="monthly" value="monthly">
+        <StyledCheckLabel for="monthly" value="monthly">
           Mensal
-        </StyledLabel>
+        </StyledCheckLabel>
       </div>
       <StyledLabel>Foto da Garagem</StyledLabel>{" "}
       <ImageDiv>

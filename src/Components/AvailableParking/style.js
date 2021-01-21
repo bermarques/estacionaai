@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 export const StyledCard = styled(Card)`
   width: 90vw;
-  margin-bottom: 20px;
+  margin: 20px auto;
 
   .buttons {
     display: flex;
