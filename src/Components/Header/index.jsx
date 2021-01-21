@@ -32,11 +32,7 @@ const Header = () => {
   return (
     <StyledNav>
       <NavItem>
-<<<<<<< HEAD
-        <Nav.Link onClick={() => history.push("/login")}>
-=======
         <Nav.Link onClick={() => history.goBack()}>
->>>>>>> 23f18cb3cd91c59ec7f8b5743604bc8ff287d1d4
           <BackIcon size="30px" />
         </Nav.Link>
       </NavItem>
