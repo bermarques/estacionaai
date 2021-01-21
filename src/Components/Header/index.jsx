@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <StyledNav>
       <NavItem>
-        <Nav.Link>
+        <Nav.Link onClick={() => history.push("/login")}>
           <BackIcon size="30px" />
         </Nav.Link>
       </NavItem>
