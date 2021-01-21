@@ -2,7 +2,7 @@ import AvailableParkingComponents from "../../Components/AvailableParking/index"
 
 const AvailableParking = () => {
   return (
-    <div>
+    <div align="center">
       <AvailableParkingComponents />
     </div>
   );

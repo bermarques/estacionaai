@@ -31,8 +31,8 @@ const LoginForm = () => {
   const [cookies, setCookie] = useCookies();
   const sendForm = async (event) => {
     dispatch(changeLoading(true));
-    event.preventDefault();
     const res = await requestUser(loginData, "login");
+    console.log(res);
     if (res === "Incorrect password") {
       dispatch(changeLoading(false));
 
