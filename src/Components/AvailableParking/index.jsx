@@ -3,21 +3,13 @@ import {
   CardLabel,
   CardDescription,
   MasterDiv,
-  StyleStar,
-  CardAvaliation,
-  StyledInput,
-  StyledSelect,
-  StyledLabel,
 } from "../../Style/globalStyles";
 import ParkingLotBooking from "../ParkingLotBooking";
 import { getAddress } from "../../requests/requestAdress";
 import { useCookies } from "react-cookie";
 import { useState, useEffect } from "react";
-import { States } from "../../Helpers/Available/index";
 
 const AvailableParkingComponents = () => {
-  const [city, setCity] = useState("");
-  const [selectedState, setSelectedStates] = useState("");
   const [cookies] = useCookies();
   const [parking, setParking] = useState([]);
 
@@ -28,21 +20,6 @@ const AvailableParkingComponents = () => {
   }, []);
 
   return parking?.map((elmt, idx) => (
-    /*
-    <div>
-    <StyledInput
-      placeholder="Buscar por cidade"
-      onChange={(e) => setCity(e.target.value)}
-    />
-    <StyledSelect onChange={(e) => setSelectedStates(e.target.value)}>
-      {States.map(({ value, name }, index) => (
-        <option key={index} value={value}>
-          {name}
-        </option>
-      ))}
-    </StyledSelect>
-    </div>
-    */
     <MasterDiv key={idx}>
       <ParkingCard>
         <img src={elmt.image} alt="Vaga" />
