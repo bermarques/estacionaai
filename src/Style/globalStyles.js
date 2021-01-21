@@ -87,9 +87,10 @@ export const StyledButton = styled.button`
 
 export const StyleAlert = styled(Alert)`
   position: fixed;
-  top: 5vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 50%;
-  left: 10%;
   opacity: 0.7;
 `;
 

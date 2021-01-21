@@ -55,7 +55,6 @@ const DriverFormComponent = () => {
   };
 
   useEffect(() => {
-    console.log(errors);
     const message =
       errors.name?.message ||
       errors.email?.message ||
