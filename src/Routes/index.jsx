@@ -40,7 +40,6 @@ const Routes = () => {
     } else {
       history.push("/");
     }
-
     setTimeout(() => {
       dispatch(changeLoading(false));
     }, 3000);
