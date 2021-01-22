@@ -237,11 +237,7 @@ const ParkingLocation = () => {
         <StyledUploadButton for="image">Upload</StyledUploadButton>
         <input id="image" name="image" onChange={changeImage} type="file" />
       </ImageDiv>
-      <StyledButton
-        className="button-send-parking"
-        onChange={changeImage}
-        type="submit"
-      >
+      <StyledButton onChange={changeImage} type="submit">
         Enviar
       </StyledButton>
     </StyledForm>

@@ -19,6 +19,7 @@ const Header = () => {
   useEffect(() => {
     pathname === "/vagas" && setTitle("Vagas");
     pathname === "/cadastroDeVagas" && setTitle("Cadastro de Vagas");
+    pathname === "/minhasvagas" && setTitle("Minhas Vagas");
   }, [pathname]);
 
   const dispatch = useDispatch();
