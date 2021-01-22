@@ -14,6 +14,7 @@ import { useCookies } from "react-cookie";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Loading from "../Pages/Loading";
+import MyParking from "../Pages/MyParking";
 
 const Routes = () => {
   const { message, typeMessage } = useSelector((state) => state.errorMessage);
@@ -56,6 +57,7 @@ const Routes = () => {
               <>
                 <Route exact path="/cadastroDeVagas" component={ParkingForm} />
                 <Route exact path="/vagas" component={AvailableParking} />
+                <Route exact path="/minhasvagas" component={MyParking} />
               </>
             )}
           </Switch>
