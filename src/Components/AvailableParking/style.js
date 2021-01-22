@@ -35,7 +35,7 @@ export const StyledCard = styled(Card)`
     overflow: hidden;
     width: auto;
     height: 500px;
-    max-width: 400px;
+    max-width: 100%;
     max-height: 300px;
     margin: 0 auto;
   }
