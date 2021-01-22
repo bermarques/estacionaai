@@ -4,7 +4,10 @@ import requestUserData from "../../../requests/RequestUser";
 export const addUserThunk = (token, userID) => {
   return async (dispatch) => {
     let user = await requestUserData(token, userID);
-    console.log(user);
-    token !== "" ? dispatch(handleUser(user.data)) : dispatch(handleUser(""));
+    if (user === "jwt expired") {
+      dispatch(handleUser(""));
+    } else {
+      dispatch(handleUser(user.data));
+    }
   };
 };

@@ -1,42 +1,17 @@
 import ParkingLotBooking from "../ParkingLotBooking";
-import { getAddress } from "../../requests/requestAdress";
 import { useCookies } from "react-cookie";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeLoading } from "../../Store/modules/loading/actions";
-import { StyledCard, MapContainer } from "./style";
+import { useState } from "react";
+import { StyledCard } from "./style";
 import { Card, Button } from "react-bootstrap";
-import axios from "axios";
 
-const AvailableParkingComponents = () => {
+const AvailableParkingComponents = ({ elmt, isMyParking }) => {
   const [show, setShow] = useState(false);
+
   const [cookies] = useCookies();
-  const [parking, setParking] = useState([]);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(changeLoading(true));
-    getAddress(cookies.token)
-      .then((res) => {
-        setParking(res.data);
-      })
-      .then(parking !== [] && dispatch(changeLoading(false)));
-  }, []);
-
-  // const getLocation = () => {
-  //   axios
-  //     .get(
-  //       `https://maps.googleapis.com/maps/api/geocode/json?address=curitiba&key=AIzaSyBH91yJj8VsDEmzhghkeXYpTIneKTxVlK4`
-  //     )
-  //     .then((res) => console.log(res));
-  // };
-
-  // getLocation();
-
-  console.log(parking);
-  return parking?.map((elmt, idx) => (
+  return (
     <>
-      <StyledCard key={idx}>
+      <StyledCard isMyParking>
         <Card.Img variant="top" src={elmt.image} />
         <Card.Body>
           <Card.Title>{elmt.city}</Card.Title>
@@ -46,15 +21,18 @@ const AvailableParkingComponents = () => {
               (elmt.monthly && "Locação Mensal ")}
           </Card.Subtitle>
           <Card.Text>Valor:R$ {elmt.price} </Card.Text>
-
-          <div className="buttons">
-            <Button variant="primary" onClick={() => setShow(true)}>
-              Reservar
-            </Button>
-          </div>
+          {!isMyParking ? (
+            <div className="buttons">
+              <Button onClick={() => setShow(true)}>Reservar</Button>
+            </div>
+          ) : (
+            <div className="buttons">
+              <Button onClick={() => setShow(true)}>Remover</Button>
+            </div>
+          )}
         </Card.Body>
       </StyledCard>
-      
+
       <ParkingLotBooking
         show={show}
         setShow={setShow}
@@ -62,7 +40,7 @@ const AvailableParkingComponents = () => {
         token={cookies.token}
       />
     </>
-  ));
+  );
 };
 
 export default AvailableParkingComponents;
