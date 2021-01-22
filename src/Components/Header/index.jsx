@@ -54,7 +54,7 @@ const Header = () => {
           <NavDropdown.Item onClick={() => history.push("/cadastroDeVagas")}>
             Adicionar Vaga
           </NavDropdown.Item>
-          <NavDropdown.Item onClick={() => history.push("/cadastroDeVagas")}>
+          <NavDropdown.Item onClick={() => history.push("/minhasvagas")}>
             Minhas Vagas
           </NavDropdown.Item>
           <NavDropdown.Item onClick={() => history.push("/vagas")}>

@@ -11,7 +11,7 @@ const AvailableParkingComponents = ({ elmt, isMyParking }) => {
 
   return (
     <>
-      <StyledCard isMyParking>
+      <StyledCard isMyParking={isMyParking}>
         <Card.Img variant="top" src={elmt.image} />
         <Card.Body>
           <Card.Title>{elmt.city}</Card.Title>
