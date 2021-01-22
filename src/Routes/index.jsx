@@ -29,7 +29,9 @@ const Routes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(changeLoading(true));
-    dispatch(addUserThunk(cookies.token, cookies.ID));
+    cookies.token
+      ? dispatch(addUserThunk(cookies.token, cookies.ID))
+      : dispatch(addUserThunk(""));
   }, []);
 
   useEffect(() => {
