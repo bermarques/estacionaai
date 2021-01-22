@@ -15,22 +15,34 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Loading from "../Pages/Loading";
 import MyParking from "../Pages/MyParking";
+import { changeLoading } from "../Store/modules/loading/actions";
 
 const Routes = () => {
   const { message, typeMessage } = useSelector((state) => state.errorMessage);
 
   const { user } = useSelector((state) => state.user);
   const { loading } = useSelector((state) => state.loading);
-  console.log(user);
 
   const [cookies] = useCookies();
 
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
-    cookies.token && dispatch(addUserThunk(cookies.token, cookies.ID));
-    user !== "" ? history.push("/vagas") : history.push("/login");
+    dispatch(changeLoading(true));
+    dispatch(addUserThunk(cookies.token, cookies.ID));
   }, []);
+
+  useEffect(() => {
+    if (user !== "") {
+      history.push("/vagas");
+    } else {
+      history.push("/");
+    }
+
+    setTimeout(() => {
+      dispatch(changeLoading(false));
+    }, 3000);
+  }, [user]);
 
   return (
     <>
