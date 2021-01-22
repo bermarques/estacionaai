@@ -19,6 +19,7 @@ const Header = () => {
   useEffect(() => {
     pathname === "/vagas" && setTitle("Vagas");
     pathname === "/cadastroDeVagas" && setTitle("Cadastro de Vagas");
+    pathname === "/minhasvagas" && setTitle("Minhas Vagas");
   }, [pathname]);
 
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const Header = () => {
           <NavDropdown.Item onClick={() => history.push("/cadastroDeVagas")}>
             Adicionar Vaga
           </NavDropdown.Item>
-          <NavDropdown.Item onClick={() => history.push("/cadastroDeVagas")}>
+          <NavDropdown.Item onClick={() => history.push("/minhasvagas")}>
             Minhas Vagas
           </NavDropdown.Item>
           <NavDropdown.Item onClick={() => history.push("/vagas")}>

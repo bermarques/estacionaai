@@ -18,7 +18,7 @@ const AvailableParking = () => {
     dispatch(changeLoading(true));
     getAddress(cookies.token)
       .then((res) => {
-        if (res.data === "jwt expired") {
+        if (res.data !== "jwt expired") {
           setParking(res.data);
         } else {
           removeCookies("token");

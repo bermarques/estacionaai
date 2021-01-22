@@ -17,3 +17,12 @@ export const getAddress = async (token) => {
     .catch((error) => error.response.data);
   return res;
 };
+
+export const deleteAddress = async (id, token) => {
+  const BaseURL = `https://server-estaciona-ai.herokuapp.com/address/${id}`;
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  let res = await axios
+    .delete(BaseURL, headers)
+    .catch((error) => error.response.data);
+  return res;
+};

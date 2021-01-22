@@ -19,6 +19,13 @@ export const schema = yup.object().shape({
     .positive("Somente números positivos!")
     .integer("Somente números inteiros")
     .required("O campo de preço é obrigatório!"),
+  phone: yup
+    .number("Somente números.")
+    .min(12, "Telefone deve conter 12 digitos!")
+    .positive("Somente números positivos!")
+    .integer("Somente números inteiros")
+    //.matches(/^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/,"Telefone inválido")
+    .required("O campo de telefone é obrigatório!"),
 });
 
 export const parkingFormdata = [

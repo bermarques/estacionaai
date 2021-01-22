@@ -3,15 +3,23 @@ import { useCookies } from "react-cookie";
 import { useState } from "react";
 import { StyledCard } from "./style";
 import { Card, Button } from "react-bootstrap";
+import { deleteAddress, getAddress } from "../../requests/requestAdress";
 
-const AvailableParkingComponents = ({ elmt, isMyParking }) => {
+const AvailableParkingComponents = ({ elmt, isMyParking, setMyParkings }) => {
   const [show, setShow] = useState(false);
 
   const [cookies] = useCookies();
 
+  const handleRemove = async () => {
+    let res = await deleteAddress(elmt.id, cookies.token);
+    let newParkings = await getAddress(cookies.token);
+    newParkings = newParkings.data.filter((park) => park.userId === cookies.ID);
+    res.status === 200 && setMyParkings(newParkings);
+  };
+
   return (
     <>
-      <StyledCard isMyParking>
+      <StyledCard isMyParking={isMyParking}>
         <Card.Img variant="top" src={elmt.image} />
         <Card.Body>
           <Card.Title>{elmt.city}</Card.Title>
@@ -27,7 +35,7 @@ const AvailableParkingComponents = ({ elmt, isMyParking }) => {
             </div>
           ) : (
             <div className="buttons">
-              <Button onClick={() => setShow(true)}>Remover</Button>
+              <Button onClick={handleRemove}>Remover</Button>
             </div>
           )}
         </Card.Body>
