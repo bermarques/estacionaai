@@ -1,9 +1,32 @@
 import AvailableParkingComponents from "../../Components/AvailableParking/index";
 import SearchParking from "../../Components/SearchParking/index";
-import { useState } from "react";
+import { Container } from "./style";
+import { useState, useEffect } from "react";
 import { StyledInput, StyledButton, MasterDiv } from "../../Style/globalStyles";
+import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import { changeLoading } from "../../Store/modules/loading/actions";
+import { getAddress } from "../../requests/requestAdress";
+import { addUserThunk } from "../../Store/modules/user/thunk";
 
 const AvailableParking = () => {
+  const [cookies, setCookies, removeCookies] = useCookies();
+  const [parking, setParking] = useState([]);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(changeLoading(true));
+    getAddress(cookies.token)
+      .then((res) => {
+        if (res.data === "jwt expired") {
+          setParking(res.data);
+        } else {
+          removeCookies("token");
+          dispatch(addUserThunk(""));
+        }
+      })
+      .then(parking !== [] && dispatch(changeLoading(false)));
+  }, []);
   const [cityes, setCityes] = useState("");
   const [activeSearch, setActiveSearch] = useState(false);
 
@@ -33,9 +56,15 @@ const AvailableParking = () => {
         )}
       </MasterDiv>
       {activeSearch === false ? (
-        <AvailableParkingComponents />
+        <Container>
+          {parking.map((elmt, idx) => (
+            <AvailableParkingComponents elmt={elmt} key={idx} />
+          ))}
+        </Container>
       ) : (
-        <SearchParking cityes={cityes} />
+        <Container>
+          <SearchParking cityes={cityes} />
+        </Container>
       )}
     </>
   );
