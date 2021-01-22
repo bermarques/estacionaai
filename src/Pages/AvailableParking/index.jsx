@@ -1,5 +1,6 @@
 import AvailableParkingComponents from "../../Components/AvailableParking/index";
 import SearchParking from "../../Components/SearchParking/index";
+import {Container} from "./style";
 import { useState } from "react";
 import { StyledInput, StyledButton, MasterDiv } from "../../Style/globalStyles";
 
@@ -33,9 +34,13 @@ const AvailableParking = () => {
         )}
       </MasterDiv>
       {activeSearch === false ? (
-        <AvailableParkingComponents />
+        <Container>
+          <AvailableParkingComponents />
+        </Container>
       ) : (
-        <SearchParking cityes={cityes} />
+        <Container>
+          <SearchParking cityes={cityes} />
+        </Container>
       )}
     </>
   );

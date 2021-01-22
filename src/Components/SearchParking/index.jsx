@@ -7,7 +7,6 @@ import { changeLoading } from "../../Store/modules/loading/actions";
 import { StyledCard, MapContainer } from "../AvailableParking/style";
 import { Card, Button } from "react-bootstrap";
 import { StyledLabel } from "../../Style/globalStyles";
-import Map from "../Maps";
 import axios from "axios";
 
 const SearchParking = ({ cityes }) => {
@@ -52,35 +51,22 @@ const SearchParking = ({ cityes }) => {
                     (monthly && "Locação Mensal ")}
                 </Card.Subtitle>
                 <Card.Text>Valor: R${price} </Card.Text>
-                <MapContainer show={showMore}>
-                  <Map
-                    isMarkerShown
-                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                    loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={
-                      <div style={{ width: "100%", height: `200px` }} />
-                    }
-                    mapElement={<div style={{ height: `100%` }} />}
-                  />
-                </MapContainer>
                 <div className="buttons">
                   <Button variant="primary" onClick={() => setShow(true)}>
                     Reservar
                   </Button>
-                  <Card.Link onClick={() => setShowMore(!showMore)}>
-                    Mais Informações
-                  </Card.Link>
                 </div>
               </Card.Body>
             </StyledCard>
           ))}
-        <ParkingLotBooking
+
+      </div>
+      <ParkingLotBooking
           show={show}
           setShow={setShow}
           data={parking}
           token={cookies.token}
         />
-      </div>
     </>
   );
 };
