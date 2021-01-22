@@ -20,6 +20,7 @@ const Routes = () => {
 
   const { user } = useSelector((state) => state.user);
   const { loading } = useSelector((state) => state.loading);
+  console.log(user);
 
   const [cookies] = useCookies();
 
@@ -27,7 +28,7 @@ const Routes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     cookies.token && dispatch(addUserThunk(cookies.token, cookies.ID));
-    user !== "" && history.push("/vagas");
+    user !== "" ? history.push("/vagas") : history.push("/login");
   }, []);
 
   return (

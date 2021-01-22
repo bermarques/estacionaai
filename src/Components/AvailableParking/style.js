@@ -14,11 +14,32 @@ export const StyledCard = styled(Card)`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     button {
-      background-color: #01e6b4;
       border: none;
     }
   }
+  ${(props) =>
+    props.isMyParking
+      ? css`
+          button {
+            background-color: red;
+          }
+        `
+      : css`
+          button {
+            background-color: #01e6b4;
+          }
+        `}
+  .card-img-top {
+    overflow: hidden;
+    width: auto;
+    height: 500px;
+    max-width: 400px;
+    max-height: 300px;
+    margin: 0 auto;
+  }
+
   @media (min-width: 1200px) {
     overflow: hidden;
     padding: 0 0 32px;
@@ -27,25 +48,5 @@ export const StyledCard = styled(Card)`
     width: 400px;
     max-width: 400px;
     border-radius: 5px;
-
-    img {
-      overflow: hidden;
-      width: auto;
-      height: 500px;
-      max-width: 400px;
-      max-height: 300px;
-      margin: 0 auto;
-    }
   }
-`;
-
-export const MapContainer = styled.div`
-  height: 0px;
-  overflow: hidden;
-  /* transition: 1s; */
-  ${(props) =>
-    props.show &&
-    css`
-      height: 200px;
-    `}
 `;
