@@ -9,14 +9,14 @@
   <img src="https://i.imgur.com/TAR0XJm.png" /> <img src="https://i.imgur.com/bzWO6jJ.png" />
   
   ## Tecnologias
-  # Stack
+  ### Stack
   - React com Redux
-  # Bibliotecas
+  ### Bibliotecas
   - Styled Components
   - React Bootstrap
   - Yup
   - React Hook Form
-  # API's externas
+  ## API's externas
   - ViaCEP para preenchimento automático de campos
   - ImgBB para subir as imagens
 
